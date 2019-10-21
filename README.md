@@ -37,22 +37,22 @@ Notification mail and password recovery will be saved in the config file
 
 **Development tools**
 
-- Vue-cli
-	- Vuex
-	- Vue route
-	- Papaparse CSV parse Javascript
+- [Vue-cli](https://vuejs.org/ "Vue-cli")
+	- [Vuex](https://vuex.vuejs.org/ "Vuex")
+	- [Vue route](https://router.vuejs.org/ "Vue route")
+	- [Papaparse CSV parse Javascript](https://www.papaparse.com/ "Papaparse CSV parse Javascript")
 
-- Vuetify (UI)
-- PHP (Framework Ligne Api Rest)
+- [Vuetify (UI)](https://vuetifyjs.com "Vuetify (UI)")
+- [PHP (Framework Ligne Api Rest)](https://ligne-framework.gitbook.io/ligne-framework-php/ "PHP (Framework Ligne Api Rest)")
 
 **Depdendencys**
-- Config_lite (Edit ini files System)
+- [Config_lite (Edit ini files System)](https://packagist.org/packages/pear/config_lite "Config_lite (Edit ini files System)")
 	- Email and password settings
 	- Database credentials
 	- Allow the registration of new users
 
-- Phpmailer
-- Ingenerator/tokenista
+- [Phpmailer](https://packagist.org/packages/phpmailer/phpmailer "Phpmailer")
+- [Ingenerator/tokenista](https://packagist.org/packages/ingenerator/tokenista "Ingenerator/tokenista")
 
 **Database**
  - Postgres
