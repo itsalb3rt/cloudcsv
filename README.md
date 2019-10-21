@@ -1,29 +1,61 @@
-# cloudcsv_app
+<center>
+<img src="https://i.imgur.com/BwKm56Q.png" />
+</center>
 
-## Project setup
-```
-npm install
-```
+---
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+CloudCSV is a Open source web application for the storage of dynamic CSV files, user management, email notifications and more ...
 
-### Compiles and minifies for production
-```
-npm run build
-```
+**Auth**
+- User Registration
+- Login
+- Password recovery
 
-### Run your tests
-```
-npm run test
-```
+**Data treatment**
 
-### Lints and fixes files
-```
-npm run lint
-```
+- CSV file data upload
+- Check the data already uploaded
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Settings**
+
+- Section to specify the delimited csv files
+	- Eat (,)
+	- Semicolon ( ; )
+	- Tabulation
+	- Pipe (|)
+	- Automatic
+
+**Database access settings for creating the table to which the data will be uploaded**
+
+- Section to establish the credentials of the database
+- Section for creating and editing the database
+
+Mail setting for sending password recovery emails.
+Mail settings to notify when data is uploaded
+Notification mail and password recovery will be saved in the config file
+
+
+**Development tools**
+
+- Vue-cli
+	- Vuex
+	- Vue route
+	- Papaparse CSV parse Javascript
+
+- Vuetify (UI)
+- PHP (Framework Ligne Api Rest)
+
+**Depdendencys**
+- Config_lite (Edit ini files System)
+	- Email and password settings
+	- Database credentials
+	- Allow the registration of new users
+
+- Phpmailer
+- Ingenerator/tokenista
+
+**Database**
+ - Postgres
+
+Authentication will be based on Tokens, the token will be stored in the database and validated if the token corresponds to the users, the token must be self-generated every time the user logs on.
+Records cannot be deleted if you do not migrate to a deletion table, when a main table is modified, the deletion table should be modified, only when a column is created.
