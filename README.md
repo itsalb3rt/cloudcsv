@@ -46,7 +46,7 @@ Notification mail and password recovery will be saved in the config file
 - [PHP (Framework Ligne Api Rest)](https://ligne-framework.gitbook.io/ligne-framework-php/ "PHP (Framework Ligne Api Rest)")
 
 **Depdendencys**
-- [Config_lite (Edit ini files System)](https://packagist.org/packages/pear/config_lite "Config_lite (Edit ini files System)")
+- [ConfigFileManager (Edit ini files System)](https://github.com/ghalambaz/ConfigFileManager "ConfigFileManager (Edit ini files System)")
 	- Email and password settings
 	- Database credentials
 	- Allow the registration of new users
