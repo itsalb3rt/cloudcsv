@@ -1,0 +1,17 @@
+{
+  "auth":{
+    "login":"Login",
+    "register":"Register",
+    "userName":"User name",
+    "password":"Password",
+    "confirmPassword":"Confirm password",
+    "forgotPassword":"Forgot password?",
+    "fullName":"Full name",
+    "email":"Email",
+    "autoFillField":"This field autofill with the email name",
+    "yourHaveAccount":"You have account ?",
+    "recoveryAccount":"Recovery Account",
+    "recoveryAccountInformation":"Forgot your account’s password or having trouble logging into your Team? Enter your email address and we’ll send you a recovery link.",
+    "newPassword":"Enter the new password, make a sure the new password have minimum 8 characters."
+  }
+}
