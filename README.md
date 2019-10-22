@@ -57,6 +57,7 @@ Notification mail and password recovery will be saved in the config file
 - - Email send
 - [Ingenerator/tokenista](https://packagist.org/packages/ingenerator/tokenista "Ingenerator/tokenista")
 - - Generate a unique token with time mark, for example for account recovery
+- [Email Validator](https://packagist.org/packages/egulias/email-validator)
 
 **Database**
  - Postgres
