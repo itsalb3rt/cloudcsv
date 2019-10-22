@@ -46,13 +46,17 @@ Notification mail and password recovery will be saved in the config file
 - [PHP (Framework Ligne Api Rest)](https://ligne-framework.gitbook.io/ligne-framework-php/ "PHP (Framework Ligne Api Rest)")
 
 **Depdendencys**
+- [Http Foundation](https://packagist.org/packages/symfony/http-foundation)
+- - The HttpFoundation component defines an object-oriented layer for the HTTP specification.
 - [ConfigFileManager (Edit ini files System)](https://github.com/ghalambaz/ConfigFileManager "ConfigFileManager (Edit ini files System)")
 	- Email and password settings
 	- Database credentials
 	- Allow the registration of new users
 
 - [Phpmailer](https://packagist.org/packages/phpmailer/phpmailer "Phpmailer")
+- - Email send
 - [Ingenerator/tokenista](https://packagist.org/packages/ingenerator/tokenista "Ingenerator/tokenista")
+- - Generate a unique token with time mark, for example for account recovery
 
 **Database**
  - Postgres
