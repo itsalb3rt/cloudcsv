@@ -5,32 +5,25 @@
         <router-view />
       </v-container>
       <v-snackbar
-        :value="snackbar.show"
-        :multi-line="snackbar.multiLine"
-        :top="snackbar.top === 'top' "
-        :bottom="snackbar.bottom === 'bottom' "
-        :color="snackbar.color"
+        :value="$store.state.snackbar.snackbar.show"
+        :multi-line="$store.state.snackbar.snackbar.multiLine"
+        :top="$store.state.snackbar.snackbar.top === 'top' "
+        :bottom="$store.state.snackbar.snackbar.bottom === 'bottom' "
+        :color="$store.state.snackbar.snackbar.color"
       >
-        {{snackbar.message}}
-        <v-btn dark text @click="setSnackbarShow(false)">Cerrar</v-btn>
+        {{$store.state.snackbar.snackbar.message}}
+        <v-btn dark text @click="$store.commit('snackbar/setSnackbarShow',false)">Cerrar</v-btn>
       </v-snackbar>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "App",
   data: () => ({
     //
   }),
-  methods: {
-    ...mapMutations(["setSnackbar", "setSnackbarShow"])
-  },
-  computed: {
-    ...mapState(["user", "isLoged", "currentNavegationArea", "snackbar"])
-  }
 };
 </script>
