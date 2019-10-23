@@ -66,18 +66,24 @@ export default {
           user_name: this.userName,
           password: this.password
         })
-        .then(() => {
-          this.loading = false;
-          console.log(this.$store.state.auth.user);
+        .then(response => {
+          setTimeout(() => {
+            this.loading = false;
+            window.localStorage.setItem('token',response.data.token);
+            this.$store.commit("auth/SET_USER", response.data);
+            this.$router.push('data/import');
+          }, 1000);
         })
         .catch(error => {
           this.loading = false;
-          this.$store.commit("snackbar/setSnackbar", {
-            show: true,
-            message: this.$t("auth.wrongCredentials"),
-            color: "error",
-            top: true
-          });
+          if (error.response.status === 401) {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: this.$t("auth.wrongCredentials"),
+              color: "error",
+              top: true
+            });
+          }
         });
     }
   }
