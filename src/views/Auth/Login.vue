@@ -42,7 +42,13 @@
   </div>
 </template>
 <script>
+import { getAllUsers, getUser } from '@/api/Users.api';
 export default {
+  mounted() {
+    getAllUsers().then(response=>{
+      console.log(response.data)
+    })
+  },
   data() {
     return {
       materialImage: require("@/assets/images/MaterialData.png")
