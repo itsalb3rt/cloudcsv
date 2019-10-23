@@ -8,10 +8,16 @@
           </v-col>
           <v-col cols="6">
             <v-form ref="loginForm">
-              <v-btn color="primary" to="/auth/register" text class="float-right">{{$t('auth.register')}}</v-btn>
+              <v-btn
+                color="primary"
+                to="/auth/register"
+                text
+                class="float-right"
+              >{{$t('auth.register')}}</v-btn>
               <h1 class="text-center">{{$t('auth.login')}}</h1>
               <div class="mt-10 mb-3">
                 <v-text-field
+                  v-model="userName"
                   name="userName"
                   :label="$t('auth.userName')"
                   id="userName"
@@ -20,6 +26,7 @@
                   outlined
                 ></v-text-field>
                 <v-text-field
+                  v-model="password"
                   name="password"
                   :label="$t('auth.password')"
                   id="password"
@@ -29,7 +36,7 @@
                 ></v-text-field>
               </div>
               <div class="text-center">
-                <v-btn color="primary">{{$t('auth.login')}}</v-btn>
+                <v-btn color="primary" :loading="loading" @click="checkLogin()">{{$t('auth.login')}}</v-btn>
               </div>
               <div class="text-center mt-3 mb-3">
                 <router-link to="/auth/recovery-account">{{$t('auth.forgotPassword')}}</router-link>
@@ -42,17 +49,37 @@
   </div>
 </template>
 <script>
-import { getAllUsers, getUser } from '@/api/Users.api';
 export default {
-  mounted() {
-    getAllUsers().then(response=>{
-      console.log(response.data)
-    })
-  },
   data() {
     return {
-      materialImage: require("@/assets/images/MaterialData.png")
+      materialImage: require("@/assets/images/MaterialData.png"),
+      userName: "",
+      password: "",
+      loading: false
     };
+  },
+  methods: {
+    checkLogin() {
+      this.loading = true;
+      this.$store
+        .dispatch("auth/login", {
+          user_name: this.userName,
+          password: this.password
+        })
+        .then(() => {
+          this.loading = false;
+          console.log(this.$store.state.auth.user);
+        })
+        .catch(error => {
+          this.loading = false;
+          this.$store.commit("snackbar/setSnackbar", {
+            show: true,
+            message: this.$t("auth.wrongCredentials"),
+            color: "error",
+            top: true
+          });
+        });
+    }
   }
 };
 </script>
