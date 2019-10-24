@@ -16,7 +16,8 @@
     "wrongCredentials":"Wrong credentials"
   },
   "messages":{
-    "notFound":"Not found"
+    "notFound":"Not found",
+    "confirmeDelete":"Are you sure you want to delete this item?"
   },
   "forms":{
     "inputRequired":"This input is required",
@@ -62,11 +63,31 @@
     "databaseSettings":"Data base conection settings",
     "databaseSettingsInformation":"Set the host, database, user and password of your database",
     "manageTables":"Manage tables",
-    "manageTablesInformation":"Create and edit the data tables where your data from the CSV files are stored."
+    "manageTablesInformation":"Create and edit the data tables where your data from the CSV files are stored.",
+    "addNotificationEmail":"Add notification emails",
+    "destinataryInformation":"This destinatary recive email when any user",
+    "notificationOn":"Notification on",
+    "detinataryEmail":"Destinatary Email",
+    "tableName":"Table name",
+    "tableNameInformation":"Make a sure this table NO exists on your schema",
+    "tableNameInformationInput":"The name must be 2 to 20 characters. Do not contain spaces or strange characters",
+    "columns":"Columns",
+    "columnsInformation":"Column names cannot be duplicated",
+    "columnName":"Column name",
+    "columnType":"Column data type",
+    "columnLenght":"Column lenght",
+    "columnNameInformation":"The column name must be 2 to 20 characters. Do not contain spaces or strange characters"
   },
   "callAction":{
     "save":"Save",
     "saved":"Saved",
-    "add":"Add"
+    "add":"Add",
+    "create":"Create",
+    "delete":"Delete",
+    "remove":"Remove",
+    "noWait":"No!, wait, leet me see again",
+    "createTable":"Create Table",
+    "text":"Text",
+    "number":"Number"
   }
 }
