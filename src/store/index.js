@@ -5,6 +5,7 @@ import users from './modules/Users'
 import auth from './modules/Auth'
 import dataImport from './modules/DataImport'
 import tables from './modules/Tables'
+import notificationsEmails from './modules/NotificationsEmails'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     users,
     auth,
     dataImport,
-    tables
+    tables,
+    notificationsEmails
   },
   state: {
   },
