@@ -6,7 +6,7 @@
           <v-card-text>
             <p>{{$t('dataPanel.importDataInformation')}}</p>
             <v-select
-              :items="$store.state.dataImport.tables"
+              :items="$store.state.tables.items"
               v-model="importData"
               outlined
               :label="$t('dataPanel.tables')"
