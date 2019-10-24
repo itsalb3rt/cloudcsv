@@ -63,6 +63,15 @@ const routes = [{
       pageTitle: i18n.t('pageTitles.dataImport')
     }
   },
+  {
+    path: '/settings/main',
+    name: 'settings main',
+    component: () => import('@/views/Settings/Main.vue'),
+    meta: {
+      area: 'public',
+      pageTitle: i18n.t('pageTitles.settings')
+    }
+  },
 ]
 
 const router = new VueRouter({
