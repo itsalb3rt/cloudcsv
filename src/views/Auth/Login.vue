@@ -23,6 +23,8 @@
                   id="userName"
                   type="text"
                   placeholder="jhondoe"
+                  :rules="rules.requiredInput"
+                  required
                   outlined
                 ></v-text-field>
                 <v-text-field
@@ -32,6 +34,8 @@
                   id="password"
                   type="password"
                   placeholder="*********"
+                  :rules="rules.requiredInput"
+                  required
                   outlined
                 ></v-text-field>
               </div>
@@ -49,17 +53,23 @@
   </div>
 </template>
 <script>
+import formRules from '@/mixins/Miscellany/FormRules'
+
 export default {
+  mixins:[formRules],
   data() {
     return {
       materialImage: require("@/assets/images/MaterialData.png"),
       userName: "",
       password: "",
-      loading: false
+      loading: false,
     };
   },
   methods: {
     checkLogin() {
+      if(!this.$refs.loginForm.validate()){
+        return false;
+      }
       this.loading = true;
       this.$store
         .dispatch("auth/login", {
@@ -80,6 +90,20 @@ export default {
             this.$store.commit("snackbar/setSnackbar", {
               show: true,
               message: this.$t("auth.wrongCredentials"),
+              color: "error",
+              top: true
+            });
+          }else if(error.response.status === 404){
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: `${this.$t("auth.userName")} ${this.$t("messages.notFound")}`,
+              color: "error",
+              top: true
+            });
+          }else{
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: `${this.$t("server.serverError")} ${this.$t('server.tryAgainLater')}`,
               color: "error",
               top: true
             });
