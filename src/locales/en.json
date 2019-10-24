@@ -14,5 +14,21 @@
     "recoveryAccountInformation":"Forgot your account’s password or having trouble logging into your Team? Enter your email address and we’ll send you a recovery link.",
     "newPassword":"Enter the new password, make a sure the new password have minimum 8 characters.",
     "wrongCredentials":"Wrong credentials"
+  },
+  "messages":{
+    "notFound":"Not found"
+  },
+  "forms":{
+    "inputRequired":"This input is required",
+    "emailIsRequired":"Email is required",
+    "invalidEmail":"Email must be valid",
+    "minLength8":"Must be less than 8 characters",
+    "confirmeRegister":"registered",
+    "userNameInformation":"The username must be 6 to 20 characters. Do not contain spaces or strange characters"
+
+  },
+  "server":{
+    "serverError":"Internal server error.",
+    "tryAgainLater":"Please try again later"
   }
 }
