@@ -30,5 +30,22 @@
   "server":{
     "serverError":"Internal server error.",
     "tryAgainLater":"Please try again later"
+  },
+  "pageTitles":{
+    "dataImport":"Data import"
+  },
+  "dataPanel":{
+    "importDataInformation":"Before selecting the file remember to choose the list below where you want to upload the data.",
+    "tables":"Tables",
+    "csvDelimiter":"CSV delimiter",
+    "automatic":"Automatic",
+    "comma":"Comma",
+    "semicolon":"Semicolon",
+    "tabulation":"Tabulation",
+    "pipe":"Pipe",
+    "addCsvLabel":"Click here to upload your CSV",
+    "submitButtonText":"Upload to data base",
+    "submitButtonTextDisabled":"Upload your file first",
+    "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area"
   }
 }
