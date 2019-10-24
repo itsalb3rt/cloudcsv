@@ -81,7 +81,7 @@ export default {
             this.loading = false;
             window.localStorage.setItem('token',response.data.token);
             this.$store.commit("auth/SET_USER", response.data);
-            this.$router.push('data/import');
+            this.$router.push('/data/import');
           }, 1000);
         })
         .catch(error => {
