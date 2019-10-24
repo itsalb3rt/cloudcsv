@@ -14,6 +14,12 @@ export default {
                 ],
                 userName:[
                     v => /^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(v) || this.$t('forms.userNameInformation'),
+                ],
+                tableColumns:[
+                    v => /^(?=.{2,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(v) || this.$t('settings.columnNameInformation'),
+                ],
+                tableName:[
+                    v => /^(?=.{2,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(v) || this.$t('settings.tableNameInformationInput'),
                 ]
             }
         }
