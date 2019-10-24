@@ -1,7 +1,10 @@
-import {login} from "@/api/Auth.api"
+import {
+    login,
+    register
+} from "@/api/Auth.api"
 
 export default {
-    namespaced:true,
+    namespaced: true,
     state: {
         user: []
     },
@@ -11,15 +14,15 @@ export default {
         }
     },
     actions: {
-        login({commit},payload) {
-            return new Promise((resolve, reject) => {
-                login(payload).then(response => {
-                    commit('SET_USER', response.data);
-                    resolve();
-                }).catch(error => {
-                    reject();
-                });
-            });
+        login({
+            commit
+        }, payload) {
+            return login(payload);
+        },
+        register({
+            commit
+        }, payload) {
+            return register(payload);
         }
     },
     mutations: {
