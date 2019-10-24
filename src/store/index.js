@@ -4,6 +4,7 @@ import snackbar from './modules/Snackbar'
 import users from './modules/Users'
 import auth from './modules/Auth'
 import dataImport from './modules/DataImport'
+import tables from './modules/Tables'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
     snackbar,
     users,
     auth,
-    dataImport
+    dataImport,
+    tables
   },
   state: {
   },
