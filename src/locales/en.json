@@ -32,7 +32,8 @@
     "tryAgainLater":"Please try again later"
   },
   "pageTitles":{
-    "dataImport":"Data import"
+    "dataImport":"Data import",
+    "settings":"Settings"
   },
   "dataPanel":{
     "importDataInformation":"Before selecting the file remember to choose the list below where you want to upload the data.",
@@ -47,5 +48,25 @@
     "submitButtonText":"Upload to data base",
     "submitButtonTextDisabled":"Upload your file first",
     "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area"
+  },
+  "settings":{
+    "language":"Language",
+    "languageInformation":"Select the language you want see the system, this option is only for you PC",
+    "systemEmail":"System email",
+    "systemEmialInformation":"System email is email for account recovery and notifications emails. Using SMTP",
+    "notificationEmails":"Notifications emails",
+    "notificationEmailInformation":"The system send notification via email when new data entry/delete in select table name below.",
+    "userManager":"User manager",
+    "userManagerInformation":"Create, edit and manage all user data",
+    "permitNewUserRegister":"Permit new user account register",
+    "databaseSettings":"Data base conection settings",
+    "databaseSettingsInformation":"Set the host, database, user and password of your database",
+    "manageTables":"Manage tables",
+    "manageTablesInformation":"Create and edit the data tables where your data from the CSV files are stored."
+  },
+  "callAction":{
+    "save":"Save",
+    "saved":"Saved",
+    "add":"Add"
   }
 }
