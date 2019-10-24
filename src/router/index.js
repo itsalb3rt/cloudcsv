@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import i18n from '@/i18n';
 
 Vue.use(VueRouter)
 
@@ -52,7 +53,16 @@ const routes = [{
       area: 'public',
       pageTitle: 'Recovery Account'
     }
-  }
+  },
+  {
+    path: '/data/import',
+    name: 'data import',
+    component: () => import('@/views/Data/Import.vue'),
+    meta: {
+      area: 'public',
+      pageTitle: i18n.t('pageTitles.dataImport')
+    }
+  },
 ]
 
 const router = new VueRouter({
