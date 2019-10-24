@@ -33,7 +33,7 @@ export default {
       items: [
         { text: "UPLOAD DATA", route: "/data/import" },
         { text: "QUERY", route: "/data/export" },
-        { text: "SETTING", route: "/settings" }
+        { text: "SETTING", route: "/settings/main" }
       ]
     };
   }
