@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-content>
+      <the-menu/>
       <v-container grid-list-xs>
         <router-view />
       </v-container>
@@ -19,9 +20,13 @@
 </template>
 
 <script>
+import TheMenu from '@/components/TheMenu'
 
 export default {
   name: "App",
+  components:{
+    TheMenu
+  },
   data: () => ({
     //
   }),
