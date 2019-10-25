@@ -24,7 +24,18 @@ const routes = [{
     component: () => import('@/views/Auth/Login.vue'),
     meta: {
       area: 'public',
+      authorizationRequired: false,
       pageTitle: 'Login'
+    }
+  },
+  {
+    path: '/auth/logout',
+    name: 'logout',
+    component: () => import('@/views/Auth/Logout.vue'),
+    meta: {
+      area: 'user',
+      authorizationRequired: true,
+      pageTitle: 'Logout'
     }
   },
   {
@@ -33,6 +44,7 @@ const routes = [{
     component: () => import('@/views/Auth/Register.vue'),
     meta: {
       area: 'public',
+      authorizationRequired: false,
       pageTitle: 'Register'
     }
   },
@@ -42,6 +54,7 @@ const routes = [{
     component: () => import('@/views/Auth/RecoveryAccount.vue'),
     meta: {
       area: 'public',
+      authorizationRequired: false,
       pageTitle: 'Recovery Account'
     }
   },
@@ -51,6 +64,7 @@ const routes = [{
     component: () => import('@/views/Auth/ResetPassword.vue'),
     meta: {
       area: 'public',
+      authorizationRequired: false,
       pageTitle: 'Recovery Account'
     }
   },
@@ -59,7 +73,8 @@ const routes = [{
     name: 'data import',
     component: () => import('@/views/Data/Import.vue'),
     meta: {
-      area: 'public',
+      area: 'user',
+      authorizationRequired: true,
       pageTitle: i18n.t('pageTitles.dataImport')
     }
   },
@@ -68,7 +83,8 @@ const routes = [{
     name: 'settings main',
     component: () => import('@/views/Settings/Main.vue'),
     meta: {
-      area: 'public',
+      area: 'admin',
+      authorizationRequired: true,
       pageTitle: i18n.t('pageTitles.settings')
     }
   },
@@ -84,12 +100,20 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.pageTitle;
   const token = window.localStorage.getItem('token');
 
-  if (token === null) {
-    next('/auth/login');
+  if (to.meta.area === 'public') {
+    if (token === null)
+      next();
+    else {
+      next('/data/import');
+    }
   } else {
-    store.commit('auth/SET_LOGGED',true);
-    store.commit('auth/SET_USER',JSON.parse(window.localStorage.getItem('user')));
-    next();
+    if (token === null)
+      next('/auth/login');
+    else {
+      store.commit('auth/SET_LOGGED', true);
+      store.commit('auth/SET_USER', JSON.parse(window.localStorage.getItem('user')));
+      next();
+    }
   }
 
 })
