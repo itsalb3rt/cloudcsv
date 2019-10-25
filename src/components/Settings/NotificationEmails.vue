@@ -83,6 +83,7 @@ export default {
       email: "",
       headers: [
         { text: this.$t("auth.email"), value: "email" },
+        { text: this.$t("settings.tableName"), value: "table.table_name" },
         { text: "ON", value: "action", sortable: false },
         {
           text: this.$t("callAction.action"),
