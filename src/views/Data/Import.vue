@@ -6,8 +6,10 @@
           <v-card-text>
             <p>{{$t('dataPanel.importDataInformation')}}</p>
             <v-select
-              :items="$store.state.tables.items"
-              v-model="importData"
+              :items="$store.getters['tables/getTables']"
+              v-model="table"
+              item-text="table_name"
+              item-value="id_table_storage"
               outlined
               :label="$t('dataPanel.tables')"
             ></v-select>
@@ -41,7 +43,9 @@
             <template v-if="importData.length === 0">
               <div class="text-center mt-10">
                 <v-icon color="success" class="mr-2">fa-info-circle</v-icon>
-                <span class="font-weight-bold primary--text">{{$t('dataPanel.beforeImportTableInfo')}}</span>
+                <span
+                  class="font-weight-bold primary--text"
+                >{{$t('dataPanel.beforeImportTableInfo')}}</span>
               </div>
             </template>
             <template v-else>
@@ -56,8 +60,19 @@
 </template>
 <script>
 export default {
+  mounted() {
+    this.$store
+      .dispatch("tables/fetchAll")
+      .then(response => {
+        this.$store.commit("tables/SET_TABLES", response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   data() {
     return {
+      table:'',
       importData: [],
       csvDelimiter: "auto"
     };
