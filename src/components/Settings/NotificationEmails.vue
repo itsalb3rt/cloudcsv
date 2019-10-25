@@ -7,6 +7,18 @@
         <v-icon class="mr-2">fa-plus-circle</v-icon>
         {{$t('callAction.add')}} {{$t('auth.email')}}
       </v-btn>
+      <div>
+        <v-data-table
+          :headers="headers"
+          :items="$store.getters['notificationsEmails/getEmails']"
+          :items-per-page="5"
+          class="elevation-1"
+        >
+          <template v-slot:item.actions="{ item }">
+            <v-icon small @click="deleteItem(item)">fa-trash</v-icon>
+          </template>
+        </v-data-table>
+      </div>
     </div>
     <v-dialog v-model="dialog" persistent max-width="500">
       <v-card>
@@ -60,12 +72,24 @@ import formsRules from "@/mixins/Miscellany/FormRules";
 export default {
   mixins: [formsRules],
   name: "notificationEmails",
+  mounted() {
+    this.requestEmails();
+  },
   data() {
     return {
       dialog: false,
       table: "",
       notificationOn: "create",
-      email: ""
+      email: "",
+      headers: [
+        { text: this.$t("auth.email"), value: "email" },
+        { text: "ON", value: "action", sortable: false },
+        {
+          text: this.$t("callAction.action"),
+          value: "actions",
+          sortable: false
+        }
+      ]
     };
   },
   methods: {
@@ -75,14 +99,74 @@ export default {
     hideDialog() {
       this.dialog = false;
     },
+    requestEmails() {
+      this.$store
+        .dispatch("notificationsEmails/getNotificationsEmails")
+        .then(response => {
+          this.$store.commit("notificationsEmails/SET_EMAILS", response.data);
+        });
+    },
     saveEmail() {
       if (!this.$refs.notificationEmail.validate()) {
-        console.log("not valid");
         return false;
       }
 
+      const newNotification = {
+        email: this.email,
+        id_table_storage: this.table,
+        action: this.notificationOn
+      };
+
+      this.$store
+        .dispatch(
+          "notificationsEmails/createNotification",
+          JSON.stringify(newNotification)
+        )
+        .then(response => {
+          if (response.status === 201) {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: this.$t("callAction.save"),
+              color: "success",
+              top: true
+            });
+            this.requestEmails();
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
       this.email = "";
       this.hideDialog();
+    },
+    deleteItem(item) {
+      let request = confirm(this.$t("messages.confirmeDelete"));
+
+      if (request) {
+        const index = this.$store.getters[
+          "notificationsEmails/getEmails"
+        ].indexOf(item);
+        this.$store
+          .dispatch(
+            "notificationsEmails/deleteNotification",
+            item.id_notification_email
+          )
+          .then(response => {
+            if (response.status === 200) {
+              this.$store.commit("snackbar/setSnackbar", {
+                show: true,
+                message: this.$t("callAction.delete"),
+                color: "success",
+                top: true
+              });
+              this.$store.commit("notificationsEmails/REMOVE_EMAIL", index);
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     }
   }
 };

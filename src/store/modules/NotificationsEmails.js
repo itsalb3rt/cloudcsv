@@ -9,6 +9,11 @@ export default {
     state: {
         items: []
     },
+    getters:{
+        getEmails(state){
+            return state.items;
+        }
+    },
     actions: {
         getNotificationsEmails({commit}) {
             return getNotificationsEmails();
@@ -23,6 +28,9 @@ export default {
     mutations: {
         SET_EMAILS(state, data) {
             state.items = data;
+        },
+        REMOVE_EMAIL(state,index){
+            state.items.splice(index,1);
         }
     }
 }
