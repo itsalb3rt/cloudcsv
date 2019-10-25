@@ -10,7 +10,7 @@ import notificationsEmails from './modules/NotificationsEmails'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules:{
+  modules: {
     snackbar,
     users,
     auth,
@@ -18,10 +18,7 @@ export default new Vuex.Store({
     tables,
     notificationsEmails
   },
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  }
+  state: {},
+  mutations: {},
+  actions: {}
 })
