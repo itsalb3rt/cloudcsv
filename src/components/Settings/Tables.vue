@@ -9,6 +9,7 @@
       <p class="font-weight-bold mt-3">{{$t('settings.manageTablesInformation')}}</p>
       <div>
         <v-data-table
+          :loading="loading"
           :headers="headers"
           :items="$store.getters['tables/getTables']"
           :items-per-page="5"
@@ -21,9 +22,15 @@
         </v-data-table>
       </div>
       <div>
-        <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <v-dialog
+          scrollable
+          v-model="dialog"
+          fullscreen
+          hide-overlay
+          transition="dialog-bottom-transition"
+        >
           <v-card>
-            <v-toolbar dark color="primary">
+            <v-toolbar max-height="70" dark color="primary">
               <v-btn icon dark @click="hideDialog()">
                 <v-icon>fa-window-close</v-icon>
               </v-btn>
@@ -31,7 +38,7 @@
               <v-spacer></v-spacer>
               <v-toolbar-items>
                 <v-btn
-                  :disabled="columns.length == 0 || tableNameExits"
+                  :disabled="columns.length == 0 || tableNameExits || hasDuplicateColumn"
                   dark
                   text
                   :loading="loading"
@@ -59,6 +66,9 @@
                       class="error--text font-weight-bold"
                     >{{$t('settings.tableNameAlreadyExists')}}</p>
                   </template>
+                  <template v-if="isTableNameForbidden">
+                    <p class="error--text font-weight-bold">{{$t('settings.forbiddenTableName')}}</p>
+                  </template>
                   <p>{{$t('settings.tableNameInformation')}}</p>
                 </v-col>
                 <v-col cols="8"></v-col>
@@ -77,7 +87,18 @@
                         :label="$t('settings.columnName')"
                         :rules="rules.tableColumns"
                         required
+                        @keyup="isNameDuplicate(index)"
                       ></v-text-field>
+                      <template v-if="column.duplicate">
+                        <p
+                          class="error--text font-weight-bold mt-0"
+                        >{{$t('settings.columnNameDuplicate')}}</p>
+                      </template>
+                      <template v-if="column.forbiddenColumnName">
+                        <p
+                          class="error--text font-weight-bold mt-0"
+                        >{{$t('settings.forbiddenColumnName')}}</p>
+                      </template>
                     </v-col>
                     <v-col cols="3">
                       <v-select
@@ -130,6 +151,7 @@ import formsRules from "@/mixins/Miscellany/FormRules";
 export default {
   mixins: [formsRules],
   mounted() {
+    this.loading = true;
     this.requestTables();
   },
   data() {
@@ -145,6 +167,20 @@ export default {
       headers: [
         { text: "TABLE NAME", value: "table_name" },
         { text: "ACTIONS", value: "actions", sortable: false }
+      ],
+      duplicateColumns: [],
+      hasDuplicateColumn: false,
+      forbiddenColumnNames: [
+        "table",
+        "create_at",
+        "id_user",
+        "user",
+        "users_sessions",
+        "table_storage",
+        "delete_log",
+        "recovered_accounts",
+        "notifications_emails",
+        "tables_columns"
       ]
     };
   },
@@ -159,7 +195,9 @@ export default {
       this.columns.push({
         name: "",
         dataType: "text",
-        length: 25
+        length: 25,
+        duplicate: false,
+        forbiddenColumnName: false
       });
     },
     removeColumn(index) {
@@ -170,7 +208,6 @@ export default {
     },
     createTable() {
       if (!this.$refs.tableForm.validate()) {
-        console.log("not valid");
         return false;
       }
       this.loading = true;
@@ -241,10 +278,36 @@ export default {
         .dispatch("tables/fetchAll")
         .then(response => {
           this.$store.commit("tables/SET_TABLES", response.data);
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    isNameDuplicate(indexCurrentColumn) {
+      let countDuplicate = 0;
+
+      for (let index in this.columns) {
+        if (
+          this.columns[indexCurrentColumn].name == this.columns[index].name &&
+          index != indexCurrentColumn
+        ) {
+          this.columns[indexCurrentColumn].duplicate = true;
+          countDuplicate++;
+        }
+        this.forbiddenColumnNames.includes(
+          this.columns[indexCurrentColumn].name
+        )
+          ? (this.columns[indexCurrentColumn].forbiddenColumnName = true)
+          : (this.columns[indexCurrentColumn].forbiddenColumnName = false);
+      }
+
+      if (countDuplicate === 0) {
+        this.columns[indexCurrentColumn].duplicate = false;
+        this.hasDuplicateColumn = false;
+      } else {
+        this.hasDuplicateColumn = true;
+      }
     }
   },
   computed: {
@@ -252,6 +315,9 @@ export default {
       let tables = this.$store.getters["tables/getTables"];
       tables = tables.filter(table => table.table_name == this.tableName);
       return tables.length > 0 ? true : false;
+    },
+    isTableNameForbidden() {
+      return this.forbiddenColumnNames.includes(this.tableName);
     }
   }
 };
