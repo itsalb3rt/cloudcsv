@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <the-menu/>
+      <the-menu v-if="$store.state.auth.isLogged"/>
       <v-container grid-list-xs>
         <router-view />
       </v-container>

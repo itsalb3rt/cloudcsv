@@ -6,7 +6,8 @@ import {
 export default {
     namespaced: true,
     state: {
-        user: []
+        user: [],
+        isLogged: false
     },
     getters: {
         getUser(state) {
@@ -28,6 +29,12 @@ export default {
     mutations: {
         SET_USER(state, data) {
             state.user = data;
+        },
+        SET_LOGGED(state, value) {
+            state.isLogged = value;
+        },
+        SET_USER(state, payload) {
+            state.user = payload;
         }
     }
 }

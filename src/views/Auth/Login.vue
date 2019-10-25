@@ -77,10 +77,12 @@ export default {
           password: this.password
         })
         .then(response => {
+
+            window.localStorage.setItem('token',response.data.token);
+            window.localStorage.setItem('user',JSON.stringify(response.data));
+            this.$store.commit("auth/SET_USER", response.data);
           setTimeout(() => {
             this.loading = false;
-            window.localStorage.setItem('token',response.data.token);
-            this.$store.commit("auth/SET_USER", response.data);
             this.$router.push('/data/import');
           }, 1000);
         })
