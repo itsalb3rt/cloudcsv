@@ -89,6 +89,7 @@
     "noWait":"No!, wait, leet me see again",
     "createTable":"Create Table",
     "text":"Text",
-    "number":"Number"
+    "number":"Number",
+    "action":"Action"
   }
 }
