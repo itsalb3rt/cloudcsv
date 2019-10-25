@@ -130,14 +130,7 @@ import formsRules from "@/mixins/Miscellany/FormRules";
 export default {
   mixins: [formsRules],
   mounted() {
-    this.$store
-      .dispatch("tables/fetchAll")
-      .then(response => {
-        this.$store.commit("tables/SET_TABLES", response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.requestTables();
   },
   data() {
     return {
@@ -196,6 +189,7 @@ export default {
               color: "success",
               top: true
             });
+            this.requestTables();
             this.loading = false;
             this.columns = [];
             this.tableName = "";
@@ -215,15 +209,15 @@ export default {
         });
     },
     editItem(item) {
-      alert('in cooming')
+      alert("in cooming");
       console.log("TCL: editItem -> item", item);
     },
     deleteItem(item) {
       let request = confirm(this.$t("messages.confirmeDelete"));
 
       if (request) {
-        const index = this.$store.getters['tables/getTables'].indexOf(item);
-        
+        const index = this.$store.getters["tables/getTables"].indexOf(item);
+
         this.$store
           .dispatch("tables/deleteTable", item.id_table_storage)
           .then(response => {
@@ -236,12 +230,21 @@ export default {
               });
               this.$store.commit("tables/REMOVE_TABLE", response.data);
             }
-            
           })
           .catch(error => {
             console.log(error);
           });
       }
+    },
+    requestTables() {
+      this.$store
+        .dispatch("tables/fetchAll")
+        .then(response => {
+          this.$store.commit("tables/SET_TABLES", response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   computed: {
