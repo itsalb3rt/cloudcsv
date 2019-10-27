@@ -39,6 +39,8 @@
   "dataPanel":{
     "importDataInformation":"Before selecting the file remember to choose the list below where you want to upload the data.",
     "tables":"Tables",
+    "table":"Table",
+    "columns":"columns",
     "csvDelimiter":"CSV delimiter",
     "automatic":"Automatic",
     "comma":"Comma",
@@ -48,7 +50,9 @@
     "addCsvLabel":"Click here to upload your CSV",
     "submitButtonText":"Upload to data base",
     "submitButtonTextDisabled":"Upload your file first",
-    "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area"
+    "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area",
+    "columnsConflictInformation":"You have difference between file header and table header, please check this and upload again the file",
+    "columnNotInFile":"the following columns names not appear in your file"
   },
   "settings":{
     "language":"Language",

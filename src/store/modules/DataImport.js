@@ -17,7 +17,7 @@ export default {
             },
             {
                 text: i18n.t('dataPanel.tabulation'),
-                value: 'tab'
+                value: '    '
             },
             {
                 text: i18n.t('dataPanel.pipe'),
