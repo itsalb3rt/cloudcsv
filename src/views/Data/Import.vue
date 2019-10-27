@@ -41,7 +41,7 @@
             </div>
             <v-divider></v-divider>
             <div class="mt-4">
-              <v-btn :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0" color="primary">
+              <v-btn @click="uploadData()" :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0" color="primary">
                 <template
                   v-if="fileData.length === 0 || table.length === 0"
                 >{{$t('dataPanel.submitButtonTextDisabled')}}</template>
@@ -125,6 +125,7 @@ export default {
       Papa.parse(this.file, {
         header: true,
         delimiter: this.csvDelimiter === "auto" ? "" : this.csvDelimiter,
+        skipEmptyLines: true,
         complete: results => {
           this.setHeaders(results.meta.fields);
           this.fileData = results.data;
@@ -153,6 +154,16 @@ export default {
       this.columnsConflict = tableHeadersNames.filter(item => {
         return !fileHeaders.includes(item);
       });
+    },
+    uploadData(){
+      const request = confirm(this.$t('messages.confirmeSave'));
+      if(request){
+        const data = {
+          table_id:this.table,
+          data:this.fileData
+        };
+        console.log(JSON.stringify(data))
+      }
     }
   },
   computed: {
