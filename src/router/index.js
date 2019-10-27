@@ -79,6 +79,16 @@ const routes = [{
     }
   },
   {
+    path: '/data/export',
+    name: 'data export',
+    component: () => import('@/views/Data/Export.vue'),
+    meta: {
+      area: 'user',
+      authorizationRequired: true,
+      pageTitle: i18n.t('pageTitles.dataExport')
+    }
+  },
+  {
     path: '/settings/main',
     name: 'settings main',
     component: () => import('@/views/Settings/Main.vue'),
