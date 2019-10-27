@@ -41,7 +41,7 @@
             </div>
             <v-divider></v-divider>
             <div class="mt-4">
-              <v-btn @click="uploadData()" :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0" color="primary">
+              <v-btn :loading="loadingSubmitData" @click="uploadData()" :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0" color="primary">
                 <template
                   v-if="fileData.length === 0 || table.length === 0"
                 >{{$t('dataPanel.submitButtonTextDisabled')}}</template>
@@ -110,7 +110,8 @@ export default {
       fileHeaders: [],
       csvDelimiter: "auto",
       loadingFileData: false,
-      columnsConflict: []
+      columnsConflict: [],
+      loadingSubmitData:false,
     };
   },
   methods: {
@@ -157,12 +158,33 @@ export default {
     },
     uploadData(){
       const request = confirm(this.$t('messages.confirmeSave'));
+
       if(request){
+        this.loadingSubmitData = true;
         const data = {
           table_id:this.table,
           data:this.fileData
         };
-        console.log(JSON.stringify(data))
+        this.$store.dispatch('dataStorage/saveData', JSON.stringify(data))
+        .then(response=>{
+          if(response.status === 201){
+            this.loadingSubmitData = false;
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: this.$t("dataPanel.dataUploadSuccess"),
+              color: "success",
+              top: true
+            });
+
+            //clear data file information
+            this.table = '';
+            this.file = [];
+            this.fileData = [];
+            this.fileHeaders = [];
+          }
+        }).catch(error=>{
+          console.log(error.respose);
+        })
       }
     }
   },

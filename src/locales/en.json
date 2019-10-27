@@ -53,7 +53,8 @@
     "submitButtonTextDisabled":"Upload your file first",
     "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area",
     "columnsConflictInformation":"You have difference between file header and table header, please check this and upload again the file",
-    "columnNotInFile":"the following columns names not appear in your file"
+    "columnNotInFile":"the following columns names not appear in your file",
+    "dataUploadSuccess":"The data has been uploaded"
   },
   "settings":{
     "language":"Language",
