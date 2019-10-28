@@ -35,7 +35,8 @@
   },
   "pageTitles":{
     "dataImport":"Data import",
-    "settings":"Settings"
+    "settings":"Settings",
+    "dataExport":"Data export"
   },
   "dataPanel":{
     "importDataInformation":"Before selecting the file remember to choose the list below where you want to upload the data.",
@@ -54,7 +55,14 @@
     "beforeImportTableInfo":"When you upload your file, all the message and the content display in this area",
     "columnsConflictInformation":"You have difference between file header and table header, please check this and upload again the file",
     "columnNotInFile":"the following columns names not appear in your file",
-    "dataUploadSuccess":"The data has been uploaded"
+    "dataUploadSuccess":"The data has been uploaded",
+    "exportDataInformation":"Select the table you want query",
+    "queryByDate":"Query between dates",
+    "showOptions":"Show options",
+    "startDate":"Start date",
+    "endDate":"End date",
+    "noDataAvailable":"No dta available",
+    "recordsNumber":"Records number"
   },
   "settings":{
     "language":"Language",
@@ -99,6 +107,7 @@
     "createTable":"Create Table",
     "text":"Text",
     "number":"Number",
-    "action":"Action"
+    "action":"Action",
+    "query":"Run query"
   }
 }
