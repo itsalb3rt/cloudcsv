@@ -108,6 +108,7 @@
     "text":"Text",
     "number":"Number",
     "action":"Action",
-    "query":"Run query"
+    "query":"Run query",
+    "search":"Search"
   }
 }
