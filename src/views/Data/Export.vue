@@ -101,8 +101,20 @@
       </v-col>
       <v-col cols="8">
         <v-card>
+          <v-card-title primary-title v-if="table !== '' ">
+            {{tableName.table_name.toUpperCase()}}
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="fa-search"
+              :label="$t('callAction.search')"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-card-title>
           <v-card-text>
             <v-data-table
+              :search="search"
               :no-data-text="$t('dataPanel.noDataAvailable')"
               :headers="headers"
               :items="data"
@@ -139,7 +151,8 @@ export default {
       endDateMenu: false,
       loadingQuery: false,
       headers: [],
-      data: []
+      data: [],
+      search: ""
     };
   },
   methods: {
@@ -197,6 +210,9 @@ export default {
       } else {
         return false;
       }
+    },
+    tableName(){
+      return this.$store.getters['tables/getTables'].find(table => table.id_table_storage == this.table);
     }
   }
 };
