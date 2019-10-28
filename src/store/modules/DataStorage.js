@@ -18,8 +18,8 @@ export default {
         saveData({commit}, payload) {
             return save(payload);
         },
-        getDataByTable({ commit},idTable) {
-            return getDataByTable(idTable);
+        getDataByTable({ commit},payload) {
+            return getDataByTable(payload);
         },
         deleteRecord({commit},payload){
             return deleteByTable(payload);

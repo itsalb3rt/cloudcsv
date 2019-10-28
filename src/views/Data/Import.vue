@@ -183,6 +183,13 @@ export default {
             this.fileHeaders = [];
           }
         }).catch(error=>{
+          this.loadingSubmitData = false;
+          this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: `${this.$t("server.serverError")} ${this.$t("server.tryAgainLater")}`,
+              color: "error",
+              top: true
+            });
           console.log(error.respose);
         })
       }
