@@ -16,19 +16,7 @@
             </div>
             <v-divider></v-divider>
             <div class="mt-4 mb-4">
-              <p>{{$t('settings.systemEmail')}}</p>
-              <p>{{$t('settings.systemEmialInformation')}}</p>
-              <v-text-field
-                v-model="systemEmail"
-                name="systemEmail"
-                :label="$t('settings.systemEmail')"
-                id="systemEmail"
-                outlined
-              ></v-text-field>
-              <v-btn color="primary" outlined>
-                <v-icon class="mr-2">fa-save</v-icon>
-                {{$t('callAction.save')}} {{$t('auth.email')}}
-              </v-btn>
+              <system-email/>
             </div>
             <v-divider></v-divider>
             <div class="mt-4 mb-4">
@@ -50,11 +38,13 @@
 <script>
 import notificationEmails from '@/components/Settings/NotificationEmails'
 import tablesComponent from '@/components/Settings/Tables'
+import systemEmail from '@/components/Settings/SystemEmail'
 
 export default {
   components:{
     notificationEmails,
-    tablesComponent
+    tablesComponent,
+    systemEmail
   },
   data() {
     return {
@@ -62,8 +52,7 @@ export default {
         { text: "English", value: "en" },
         { text: "Español", value: "es" }
       ],
-      currentLanguage: "en",
-      systemEmail: ""
+      currentLanguage: "en"
     };
   }
 };
