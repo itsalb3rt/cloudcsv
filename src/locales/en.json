@@ -18,7 +18,9 @@
   "messages":{
     "notFound":"Not found",
     "confirmeDelete":"Are you sure you want to delete this item?",
-    "confirmeSave":"Are you sure you want save ?"
+    "confirmeSave":"Are you sure you want save ?",
+    "currentEmail":"Current email",
+    "nodefined":"No defined"
   },
   "forms":{
     "inputRequired":"This input is required",
@@ -109,6 +111,9 @@
     "number":"Number",
     "action":"Action",
     "query":"Run query",
-    "search":"Search"
+    "search":"Search",
+    "edit":"Edit",
+    "smtp":"SMTP",
+    "authentication":"Authentication"
   }
 }
