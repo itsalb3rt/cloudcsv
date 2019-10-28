@@ -7,6 +7,7 @@ import dataImport from './modules/DataImport'
 import tables from './modules/Tables'
 import notificationsEmails from './modules/NotificationsEmails'
 import dataStorage from './modules/DataStorage'
+import systemEmail from './modules/SystemEmail'
 
 Vue.use(Vuex)
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
     dataImport,
     tables,
     notificationsEmails,
-    dataStorage
+    dataStorage,
+    systemEmail
   },
   state: {},
   mutations: {},
