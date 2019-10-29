@@ -89,6 +89,16 @@ const routes = [{
     }
   },
   {
+    path: '/tables/views/:id',
+    name: 'tableView',
+    component: () => import('@/views/Settings/Tables/View.vue'),
+    meta: {
+      area: 'admin',
+      authorizationRequired: true,
+      pageTitle: i18n.t('pageTitles.tableView')
+    }
+  },
+  {
     path: '/settings/main',
     name: 'settings main',
     component: () => import('@/views/Settings/Main.vue'),
