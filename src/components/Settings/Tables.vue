@@ -16,7 +16,7 @@
           class="elevation-1"
         >
           <template v-slot:item.actions="{ item }">
-            <v-icon small class="mr-2" @click="editItem(item)">fa-edit</v-icon>
+            <v-icon small class="mr-2" @click="goToTableView(item)">fa-eye</v-icon>
             <v-icon small @click="deleteItem(item)">fa-trash</v-icon>
           </template>
         </v-data-table>
@@ -245,9 +245,8 @@ export default {
           }
         });
     },
-    editItem(item) {
-      alert("in cooming");
-      console.log("TCL: editItem -> item", item);
+    goToTableView(item) {
+      this.$router.push({ name: 'tableView', params: { id: item.id_table_storage } });
     },
     deleteItem(item) {
       let request = confirm(this.$t("messages.confirmeDelete"));
