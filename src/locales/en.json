@@ -38,7 +38,8 @@
   "pageTitles":{
     "dataImport":"Data import",
     "settings":"Settings",
-    "dataExport":"Data export"
+    "dataExport":"Data export",
+    "tableView":"Table view"
   },
   "dataPanel":{
     "importDataInformation":"Before selecting the file remember to choose the list below where you want to upload the data.",
