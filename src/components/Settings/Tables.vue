@@ -117,7 +117,7 @@
                         type="number"
                         v-model.number="column.length"
                         outlined
-                        :label="$t('settings.columnLenght')"
+                        :label="$t('settings.columnLength')"
                         :rules="rules.requiredInput"
                         required
                       ></v-text-field>

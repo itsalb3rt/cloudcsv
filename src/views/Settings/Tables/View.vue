@@ -60,7 +60,7 @@
                   type="number"
                   v-model.number="column.length"
                   outlined
-                  :label="$t('settings.columnLenght')"
+                  :label="$t('settings.columnLength')"
                   :rules="rules.requiredInput"
                   required
                 ></v-text-field>
@@ -101,7 +101,7 @@ export default {
       headers: [
         { text: this.$t("settings.columnName"), value: "column_name" },
         { text: this.$t("settings.columnType"), value: "type" },
-        { text: this.$t("settings.columnLenght"), value: "length" },
+        { text: this.$t("settings.columnLength"), value: "length" },
         { text: this.$t("callAction.action"), value: "action" }
       ],
       column: [],
@@ -238,6 +238,7 @@ export default {
       }
     },
     requestTable() {
+      this.loading = true;
       this.$store
         .dispatch("tables/fetch", this.$route.params.id)
         .then(response => {
