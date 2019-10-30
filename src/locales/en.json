@@ -95,7 +95,7 @@
     "columnsInformation": "Column names cannot be duplicated",
     "columnName": "Column name",
     "columnType": "Column data type",
-    "columnLenght": "Column lenght",
+    "columnLength": "Column length",
     "columnNameInformation": "The column name must be 2 to 20 characters. Do not contain spaces or strange characters",
     "tableNameAlreadyExists": "Table name already exists",
     "columnNameDuplicate": "this column name is duplicated",
