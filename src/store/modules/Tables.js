@@ -4,7 +4,9 @@ import {
     getTable,
     create,
     deleteFromDataBase,
-    updateColumn
+    updateColumn,
+    createColumn,
+    deleteColumn
 } from "@/api/Tables.api"
 
 export default {
@@ -62,6 +64,12 @@ export default {
         },
         updateColum({commit},payload){
             return updateColumn(payload);
+        },
+        createColumn({commit},payload){
+            return createColumn(payload);
+        },
+        deleteColumn({commit},id){
+            return deleteColumn(id);
         },
         deleteTable({
             commit
