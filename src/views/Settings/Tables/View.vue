@@ -30,11 +30,7 @@
                 :label="$t('settings.columnName')"
                 :rules="rules.tableColumns"
                 required
-                @keyup="isNameDuplicate(index)"
               ></v-text-field>
-              <template v-if="column.duplicate">
-                <p class="error--text font-weight-bold mt-0">{{$t('settings.columnNameDuplicate')}}</p>
-              </template>
               <template v-if="column.forbiddenColumnName">
                 <p class="error--text font-weight-bold mt-0">{{$t('settings.forbiddenColumnName')}}</p>
               </template>
@@ -100,7 +96,7 @@ export default {
         { text: this.$t("callAction.action"), value: "action" }
       ],
       column: [],
-      dialog: false,
+      dialog: false
     };
   },
   methods: {
@@ -109,7 +105,7 @@ export default {
       this.dialog = true;
     },
     update() {},
-    deleteItem(item) {}
+    deleteItem(item) {},
   },
   computed: {
     columns() {
@@ -118,6 +114,11 @@ export default {
       } else {
         return [];
       }
+    },
+    isTableNameForbidden() {
+      return this.$store.getters["tables/getForbiddenColumnNames"].includes(
+        this.tableName
+      );
     }
   }
 };
