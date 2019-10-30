@@ -3,7 +3,8 @@ import {
     getTables,
     getTable,
     create,
-    deleteFromDataBase
+    deleteFromDataBase,
+    updateColumn
 } from "@/api/Tables.api"
 
 export default {
@@ -58,6 +59,9 @@ export default {
             commit
         }, id) {
             return getTable(id);
+        },
+        updateColum({commit},payload){
+            return updateColumn(payload);
         },
         deleteTable({
             commit
