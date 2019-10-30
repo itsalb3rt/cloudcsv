@@ -18,7 +18,19 @@ export default {
                 name: i18n.t("callAction.number"),
                 value: "number"
             }
-        ]
+        ],
+        forbiddenColumnNames: [
+            "table",
+            "create_at",
+            "id_user",
+            "user",
+            "users_sessions",
+            "table_storage",
+            "delete_log",
+            "recovered_accounts",
+            "notifications_emails",
+            "tables_columns"
+          ]
     },
     getters: {
         getTables(state) {
@@ -26,6 +38,9 @@ export default {
         },
         getColumnsTypes(state){
             return state.columnstypes;
+        },
+        getForbiddenColumnNames(state){
+            return state.forbiddenColumnNames;
         }
     },
     actions: {
