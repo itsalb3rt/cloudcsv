@@ -102,7 +102,7 @@
                     </v-col>
                     <v-col cols="3">
                       <v-select
-                        :items="columnTypes"
+                        :items="$store.getters['tables/getColumnsTypes']"
                         v-model="column.dataType"
                         item-value="value"
                         item-text="name"
@@ -159,10 +159,6 @@ export default {
       dialog: false,
       tableName: "",
       columns: [],
-      columnTypes: [
-        { name: this.$t("callAction.text"), value: "text" },
-        { name: this.$t("callAction.number"), value: "number" }
-      ],
       loading: false,
       headers: [
         { text: "TABLE NAME", value: "table_name" },
