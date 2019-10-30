@@ -102,7 +102,7 @@
                     </v-col>
                     <v-col cols="3">
                       <v-select
-                        :items="columnTypes"
+                        :items="$store.getters['tables/getColumnsTypes']"
                         v-model="column.dataType"
                         item-value="value"
                         item-text="name"
@@ -159,29 +159,13 @@ export default {
       dialog: false,
       tableName: "",
       columns: [],
-      columnTypes: [
-        { name: this.$t("callAction.text"), value: "text" },
-        { name: this.$t("callAction.number"), value: "number" }
-      ],
       loading: false,
       headers: [
         { text: "TABLE NAME", value: "table_name" },
         { text: "ACTIONS", value: "actions", sortable: false }
       ],
       duplicateColumns: [],
-      hasDuplicateColumn: false,
-      forbiddenColumnNames: [
-        "table",
-        "create_at",
-        "id_user",
-        "user",
-        "users_sessions",
-        "table_storage",
-        "delete_log",
-        "recovered_accounts",
-        "notifications_emails",
-        "tables_columns"
-      ]
+      hasDuplicateColumn: false
     };
   },
   methods: {
@@ -294,7 +278,7 @@ export default {
           this.columns[indexCurrentColumn].duplicate = true;
           countDuplicate++;
         }
-        this.forbiddenColumnNames.includes(
+        this.$store.getters['tables/getForbiddenColumnNames'].includes(
           this.columns[indexCurrentColumn].name
         )
           ? (this.columns[indexCurrentColumn].forbiddenColumnName = true)
@@ -316,7 +300,7 @@ export default {
       return tables.length > 0 ? true : false;
     },
     isTableNameForbidden() {
-      return this.forbiddenColumnNames.includes(this.tableName);
+      return this.$store.getters['tables/getForbiddenColumnNames'].includes(this.tableName);
     }
   }
 };

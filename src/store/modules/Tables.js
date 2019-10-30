@@ -1,3 +1,4 @@
+import i18n from '@/i18n'
 import {
     getTables,
     getTable,
@@ -9,23 +10,58 @@ export default {
     namespaced: true,
     state: {
         items: [],
+        columnstypes: [{
+                name: i18n.t("callAction.text"),
+                value: "text"
+            },
+            {
+                name: i18n.t("callAction.number"),
+                value: "number"
+            }
+        ],
+        forbiddenColumnNames: [
+            "table",
+            "create_at",
+            "id_user",
+            "user",
+            "users_sessions",
+            "table_storage",
+            "delete_log",
+            "recovered_accounts",
+            "notifications_emails",
+            "tables_columns"
+          ]
     },
-    getters:{
+    getters: {
         getTables(state) {
             return state.items;
+        },
+        getColumnsTypes(state){
+            return state.columnstypes;
+        },
+        getForbiddenColumnNames(state){
+            return state.forbiddenColumnNames;
         }
     },
     actions: {
-        createTable({commit}, payload) {
+        createTable({
+            commit
+        }, payload) {
             return create(payload);
         },
-        fetchAll({ commit}) {
+        fetchAll({
+            commit
+        }) {
             return getTables();
         },
-        fetch({ commit},id) {
+        fetch({
+            commit
+        }, id) {
             return getTable(id);
         },
-        deleteTable({commit},id){
+        deleteTable({
+            commit
+        }, id) {
             return deleteFromDataBase(id);
         }
     },
@@ -33,8 +69,8 @@ export default {
         SET_TABLES(state, data) {
             state.items = data;
         },
-        REMOVE_TABLE(state,index){
-            state.items.splice(index,1);
+        REMOVE_TABLE(state, index) {
+            state.items.splice(index, 1);
         }
     }
 }

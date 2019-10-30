@@ -4,7 +4,7 @@ const END_POINT = '/tables/tables';
 
 const getTables = () => httpClient.get(END_POINT);
 
-const getTable = id => httpClient.get(END_POINT, id);
+const getTable = id => httpClient.get(`${END_POINT}/${id}`);
 
 const create = payload => httpClient.post(END_POINT,payload);
 
