@@ -51,7 +51,7 @@ const routes = [{
   {
     path: '/auth/recovery-account',
     name: 'recovery account',
-    component: () => import('@/views/Auth/RecoveryAccount.vue'),
+    component: () => import('@/views/Auth/ResetPassword.vue'),
     meta: {
       area: 'public',
       authorizationRequired: false,
