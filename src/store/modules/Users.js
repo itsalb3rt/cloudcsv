@@ -1,4 +1,4 @@
-import {getAllUsers} from "@/api/Users.api"
+import {getAllUsers,update} from "@/api/Users.api"
 
 export default {
     namespaced: true,
@@ -12,14 +12,10 @@ export default {
     },
     actions: {
         fetchUsers({commit}) {
-            return new Promise((resolve, reject) => {
-                getAllUsers().then(response => {
-                    commit('SET_USERS', response.data);
-                    resolve();
-                }).catch(error => {
-                    reject();
-                });
-            });
+            return getAllUsers();
+        },
+        update({commit},payload){
+            return update(payload);
         }
     },
     mutations: {
