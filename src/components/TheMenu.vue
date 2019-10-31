@@ -60,12 +60,12 @@ export default {
       profileUserDialog: false,
       profileOptions: {
         settings: {
-          text: "Settings",
+          text: this.$t('menu.settings'),
           route: "#",
           icon: "fa-cog"
         },
         logout: {
-          text: "Logout",
+          text: this.$t('menu.logout'),
           route: "/auth/logout",
           icon: "fa-sign-out-alt"
         }
