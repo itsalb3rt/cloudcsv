@@ -41,7 +41,8 @@
     "dataImport": "Data import",
     "settings": "Settings",
     "dataExport": "Data export",
-    "tableView": "Table view"
+    "tableView": "Table view",
+    "users":"Users"
   },
   "dataPanel": {
     "importDataInformation": "Before selecting the file remember to choose the list below where you want to upload the data.",
@@ -100,7 +101,18 @@
     "tableNameAlreadyExists": "Table name already exists",
     "columnNameDuplicate": "this column name is duplicated",
     "forbiddenColumnName": "This column name is forbidden",
-    "forbiddenTableName": "This table name is forbidden"
+    "forbiddenTableName": "This table name is forbidden",
+    "users":{
+      "users":"Users",
+      "name":"Name",
+      "email":"Email",
+      "createAt":"Create at",
+      "role":"Role",
+      "admin":"Admin",
+      "user":"User",
+      "basic":"Basic",
+      "security":"Security"
+    }
   },
   "callAction": {
     "save": "Save",
