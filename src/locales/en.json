@@ -138,5 +138,10 @@
     "smtp": "SMTP",
     "authentication": "Authentication",
     "goto":"go to"
+  },
+  "menu":{
+    "uploadData":"UPLOAD DATA",
+    "query":"QUERY",
+    "systemSettings":"SYSTEM SETTING"
   }
 }
