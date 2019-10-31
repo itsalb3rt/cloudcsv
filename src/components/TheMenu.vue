@@ -71,9 +71,9 @@ export default {
         }
       },
       items: [
-        { text: "UPLOAD DATA", route: "/data/import" },
-        { text: "QUERY", route: "/data/export" },
-        { text: "SETTING", route: "/settings/main" }
+        { text: this.$t('menu.uploadData'), route: "/data/import" },
+        { text: this.$t('menu.query'), route: "/data/export" },
+        { text: this.$t('menu.systemSettings'), route: "/settings/main" }
       ],
       currentUser: []
     };
