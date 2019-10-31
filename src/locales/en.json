@@ -107,6 +107,7 @@
     "columnNameDuplicate": "this column name is duplicated",
     "forbiddenColumnName": "This column name is forbidden",
     "forbiddenTableName": "This table name is forbidden",
+    "host":"Host",
     "users":{
       "users":"Users",
       "name":"Name",
