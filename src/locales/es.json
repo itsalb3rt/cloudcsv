@@ -1,9 +1,147 @@
 {
-  "auth":{
-    "login":"Login",
-    "register":"Register",
-    "userName":"User name",
-    "password":"Password",
-    "forgotPassword":"Forgot password?"
+  "auth": {
+    "login": "Inicio de sesión",
+    "register": "Registro",
+    "userName": "Nombre de usuario",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "forgotPassword": "¿Olvidó la contraseña?",
+    "fullName": "Nombre completo",
+    "email": "Correo electrónico",
+    "autoFillField": "Este campo se autocompleta con el correo electrónico",
+    "yourHaveAccount": "Tienes cuenta ?",
+    "recoveryAccount": "Recuperación de Cuenta",
+    "recoveryAccountInformation": "Olvidaste la contraseña de tu cuenta o tienes problemas para iniciar sesión en su Equipo? Ingresa tu dirección de correo electrónico y le enviaremos un enlace de recuperación.",
+    "newPassword": "Introduzca la nueva contraseña, la nueva contraseña debe tener un mínimo de 8 caracteres.",
+    "wrongCredentials": "Mal credenciales",
+    "accountRecovery": {
+      "confirmRecoveryInformation": "Pronto recibirá un correo electrónico con las instrucciones para la recuperación de la cuenta. Este correo electrónico expira en 2 horas.",
+      "invalidToken": "El símbolo no es válida, por favor intenta solicitar una recuperación de nuevo.",
+      "passwordResetSuccess": "Su contraseña se ha restablecido"
+    }
+  },
+  "messages": {
+    "notFound": "No se encuentra",
+    "confirmeDelete": "Está seguro de que desea eliminar este elemento?",
+    "confirmeSave": "Está seguro de que desea guardar ?",
+    "currentEmail": "Correo electrónico actual",
+    "nodefined": "No definido",
+    "errors": {
+      "newNameIsSameToOld": "El nuevo nombre y la edad de nombre es el mismo"
+    }
+  },
+  "forms": {
+    "inputRequired": "Esta entrada se requiere",
+    "emailIsRequired": "El Email es necesario",
+    "invalidEmail": "El correo electrónico debe ser válida",
+    "minLength8": "Debe ser de menos de 8 caracteres",
+    "confirmeRegister": "registrado",
+    "userNameInformation": "El nombre de usuario debe ser de 6 a 20 caracteres. No puede contener espacios ni caracteres extraños"
+  },
+  "server": {
+    "serverError": "Error interno del servidor.",
+    "tryAgainLater": "Por favor, inténtelo de nuevo más tarde"
+  },
+  "pageTitles": {
+    "dataImport": "Importación de datos",
+    "settings": "Configuración",
+    "dataExport": "Exportación de datos",
+    "tableView": "La vista de tabla",
+    "users": "Los usuarios"
+  },
+  "dataPanel": {
+    "importDataInformation": "Antes de seleccionar el archivo recuerde elegir la lista de debajo de donde desea cargar los datos.",
+    "tables": "Tablas",
+    "table": "Tabla",
+    "columns": "columnas",
+    "column": "Columna",
+    "csvDelimiter": "CSV delimitador",
+    "automatic": "Automático",
+    "comma": "Coma",
+    "semicolon": "Punto y coma",
+    "tabulation": "La tabulación de la",
+    "pipe": "Tubería",
+    "addCsvLabel": "Haga clic aquí para cargar el archivo CSV",
+    "submitButtonText": "Cargar a la base de datos",
+    "submitButtonTextDisabled": "Subir el archivo primero",
+    "beforeImportTableInfo": "Al cargar su archivo, el mensaje y el contenido de la pantalla en esta área",
+    "columnsConflictInformation": "Usted tiene la diferencia entre el encabezado del archivo y el encabezado de la tabla, por favor revise esto y subir de nuevo el archivo",
+    "columnNotInFile": "los siguientes nombres de las columnas no aparecen en el archivo",
+    "dataUploadSuccess": "Los datos han sido cargados",
+    "exportDataInformation": "Seleccione la tabla que desea consulta",
+    "queryByDate": "Consulta entre fechas",
+    "showOptions": "Mostrar opciones",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de fin",
+    "noDataAvailable": "No dta disponible",
+    "recordsNumber": "Número de registros"
+  },
+  "settings": {
+    "language": "Idioma",
+    "languageInformation": "Seleccione el idioma que desee ver el sistema, esta opción es sólo para PC",
+    "systemEmail": "Sistema de correo electrónico",
+    "systemEmialInformation": "Sistema de correo electrónico es el correo electrónico para la recuperación de la cuenta y notificaciones de mensajes de correo electrónico. El uso de SMTP",
+    "notificationEmails": "Las notificaciones de los correos electrónicos",
+    "notificationEmailInformation": "El sistema envía una notificación a través de correo electrónico cuando la nueva entrada de datos\/borrar, seleccione el nombre de la tabla a continuación.",
+    "userManager": "El administrador de usuarios",
+    "userManagerInformation": "Crear, editar y gestionar todos los datos de usuario",
+    "permitNewUserRegister": "Permiso de nueva cuenta de usuario registro",
+    "databaseSettings": "La base de datos de configuración de la conexión",
+    "databaseSettingsInformation": "Configurar el host, base de datos, usuario y contraseña de la base de datos",
+    "manageTables": "Administrar tablas",
+    "manageTablesInformation": "Crear y editar las tablas de datos donde los datos de los archivos CSV son almacenados.",
+    "addNotificationEmail": "Agregar los correos electrónicos de notificación",
+    "destinataryInformation": "Este destinatary de recepción de correo electrónico cuando cualquier usuario",
+    "notificationOn": "Notificación en",
+    "detinataryEmail": "Destinatary Correo Electrónico",
+    "tableName": "Nombre de la tabla",
+    "tableNameInformation": "Hacer un seguro de esta tabla NO existe en el esquema",
+    "tableNameInformationInput": "El nombre debe ser de 2 a 20 caracteres. No puede contener espacios ni caracteres extraños",
+    "columns": "Columnas",
+    "columnsInformation": "Los nombres de columna no puede ser duplicada",
+    "columnName": "Nombre de la columna",
+    "columnType": "Tipo de datos de columna",
+    "columnLength": "Longitud de la columna de",
+    "columnNameInformation": "El nombre de la columna debe ser de 2 a 20 caracteres. No puede contener espacios ni caracteres extraños",
+    "tableNameAlreadyExists": "Nombre de la tabla ya existe",
+    "columnNameDuplicate": "este nombre de columna se duplica",
+    "forbiddenColumnName": "El nombre de la columna que está prohibido",
+    "forbiddenTableName": "Este nombre de la tabla está prohibido",
+    "host": "Host",
+    "users": {
+      "users": "Los usuarios",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "createAt": "Crear en",
+      "role": "Papel",
+      "admin": "Admin",
+      "user": "Usuario",
+      "basic": "Basic",
+      "security": "Seguridad"
+    }
+  },
+  "callAction": {
+    "save": "Guardar",
+    "saved": "Guardado",
+    "add": "Agregar",
+    "create": "Crear",
+    "delete": "Eliminar",
+    "remove": "Quitar",
+    "noWait": "No!!, esperar, leet me vea de nuevo",
+    "createTable": "Crear Tabla",
+    "text": "Texto",
+    "number": "Número de",
+    "action": "Acción",
+    "query": "Ejecutar consulta",
+    "search": "Búsqueda",
+    "edit": "Editar",
+    "smtp": "SMTP",
+    "authentication": "La autenticación",
+    "goto": "ir a"
+  },
+  "menu":{
+    "uploadData":"SUBIR DATOS",
+    "query":"CONSULTA",
+    "systemSettings":"AJUSTE DEL SISTEMA"
   }
 }
