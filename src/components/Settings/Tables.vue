@@ -161,8 +161,8 @@ export default {
       columns: [],
       loading: false,
       headers: [
-        { text: "TABLE NAME", value: "table_name" },
-        { text: "ACTIONS", value: "actions", sortable: false }
+        { text: this.$t('settings.tableName'), value: "table_name" },
+        { text: this.$t('callAction.action'), value: "actions", sortable: false }
       ],
       duplicateColumns: [],
       hasDuplicateColumn: false
