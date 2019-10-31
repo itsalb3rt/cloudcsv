@@ -12,6 +12,7 @@
                 v-model="currentLanguage"
                 :label="$t('settings.language')"
                 outlined
+                @change="changeLanguage()"
               ></v-select>
             </div>
             <v-divider></v-divider>
@@ -48,6 +49,15 @@ import systemEmail from "@/components/Settings/SystemEmail";
 import usersManager from "@/components/Settings/UsersManager";
 
 export default {
+  mounted() {
+    let language = window.localStorage.getItem("app_language");
+    if (language === null) {
+      language = navigator.language;
+      this.currentLanguage = "en";
+    } else {
+      this.currentLanguage = language;
+    }
+  },
   components: {
     notificationEmails,
     tablesComponent,
@@ -60,8 +70,14 @@ export default {
         { text: "English", value: "en" },
         { text: "Español", value: "es" }
       ],
-      currentLanguage: "en"
+      currentLanguage: ""
     };
+  },
+  methods: {
+    changeLanguage() {
+      window.localStorage.setItem("app_language", this.currentLanguage);
+      window.location.reload();
+    }
   }
 };
 </script>
