@@ -20,7 +20,7 @@
         </v-data-table>
       </div>
     </div>
-    <v-dialog v-model="dialog" persistent max-width="500">
+    <v-dialog v-model="dialog" persistent max-width="800">
       <v-card>
         <v-card-title class="headline">{{$t('settings.addNotificationEmail')}}</v-card-title>
         <v-card-text>
@@ -59,8 +59,9 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click="saveEmail()">{{$t('callAction.save')}} {{$t('auth.email')}}</v-btn>
+          
           <v-btn color="secondary" outlined @click="hideDialog()">{{$t('callAction.noWait')}}</v-btn>
+          <v-btn color="primary" @click="saveEmail()">{{$t('callAction.save')}} {{$t('auth.email')}}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
