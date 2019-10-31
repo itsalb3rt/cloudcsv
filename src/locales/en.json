@@ -13,7 +13,12 @@
     "recoveryAccount": "Recovery Account",
     "recoveryAccountInformation": "Forgot your account’s password or having trouble logging into your Team? Enter your email address and we’ll send you a recovery link.",
     "newPassword": "Enter the new password, make a sure the new password have minimum 8 characters.",
-    "wrongCredentials": "Wrong credentials"
+    "wrongCredentials": "Wrong credentials",
+    "accountRecovery":{
+      "confirmRecoveryInformation":"You will soon be receiving an email with the instructions for recovering the account. This email expires in 2 hours.",
+      "invalidToken":"The token is not valid, please try request a recovery again.",
+      "passwordResetSuccess":"Your password has been reset"
+    }
   },
   "messages": {
     "notFound": "Not found",
@@ -102,6 +107,7 @@
     "columnNameDuplicate": "this column name is duplicated",
     "forbiddenColumnName": "This column name is forbidden",
     "forbiddenTableName": "This table name is forbidden",
+    "host":"Host",
     "users":{
       "users":"Users",
       "name":"Name",
@@ -130,6 +136,7 @@
     "search": "Search",
     "edit": "Edit",
     "smtp": "SMTP",
-    "authentication": "Authentication"
+    "authentication": "Authentication",
+    "goto":"go to"
   }
 }

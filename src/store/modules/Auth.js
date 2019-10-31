@@ -1,6 +1,8 @@
 import {
     login,
-    register
+    register,
+    recoveryAccount,
+    resetPassword
 } from "@/api/Auth.api"
 
 export default {
@@ -27,6 +29,12 @@ export default {
             commit
         }, payload) {
             return register(payload);
+        },
+        recoveryAccount({commit},payload){
+            return recoveryAccount(payload);
+        },
+        resetPassword({commit},payload){
+            return resetPassword(payload);
         }
     },
     mutations: {
