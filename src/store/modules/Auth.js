@@ -12,6 +12,9 @@ export default {
     getters: {
         getUser(state) {
             return state.user;
+        },
+        getMe(state){
+            return state.user;
         }
     },
     actions: {

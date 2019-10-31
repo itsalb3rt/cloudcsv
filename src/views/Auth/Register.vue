@@ -127,14 +127,23 @@ export default {
         })
         .catch(error => {
           this.loading = false;
-          this.$store.commit("snackbar/setSnackbar", {
-            show: true,
-            message: `${this.$t("server.serverError")} ${this.$t(
-              "server.tryAgainLater"
-            )}`,
-            color: "error",
-            top: true
-          });
+          if (error.response.status === 500) {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: `${this.$t("server.serverError")} ${this.$t(
+                "server.tryAgainLater"
+              )}`,
+              color: "error",
+              top: true
+            });
+          } else {
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: error.response.data,
+              color: "error",
+              top: true
+            });
+          }
         });
     }
   }

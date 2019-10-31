@@ -108,6 +108,16 @@ const routes = [{
       pageTitle: i18n.t('pageTitles.settings')
     }
   },
+  {
+    path: '/settings/users',
+    name: 'users',
+    component: () => import('@/views/Settings/Users/Main.vue'),
+    meta: {
+      area: 'admin',
+      authorizationRequired: true,
+      pageTitle: i18n.t('pageTitles.users')
+    }
+  },
 ]
 
 const router = new VueRouter({

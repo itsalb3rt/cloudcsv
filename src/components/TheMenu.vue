@@ -26,32 +26,66 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item :to="item.route" v-for="(item, index) in profileOptions" :key="index">
+            <v-list-item @click="showDialogEditProfile()">
               <v-list-item-title>
-                <v-icon class="mr-2">{{item.icon}}</v-icon>
-                {{ item.text }}
+                <v-icon class="mr-2">{{profileOptions.settings.icon}}</v-icon>
+                {{profileOptions.settings.text}}
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="profileOptions.logout.route">
+              <v-list-item-title>
+                <v-icon class="mr-2">{{profileOptions.logout.icon}}</v-icon>
+                {{profileOptions.logout.text}}
               </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </template>
     </v-toolbar>
+    <profile-dialog
+      :user="currentUser"
+      :showDialog="profileUserDialog"
+      :isAdmin="false"
+      @hideDialog="hideProfileUserDialog()"
+    />
   </div>
 </template>
 <script>
+import profileDialog from "@/components/Users/ProfileDialog";
+
 export default {
+  components: { profileDialog },
   data() {
     return {
-      profileOptions: [
-        { text: "Settings", route: "/settings/profile", icon: "fa-cog" },
-        { text: "Logout", route: "/auth/logout", icon: "fa-sign-out-alt" }
-      ],
+      profileUserDialog: false,
+      profileOptions: {
+        settings: {
+          text: "Settings",
+          route: "#",
+          icon: "fa-cog"
+        },
+        logout: {
+          text: "Logout",
+          route: "/auth/logout",
+          icon: "fa-sign-out-alt"
+        }
+      },
       items: [
         { text: "UPLOAD DATA", route: "/data/import" },
         { text: "QUERY", route: "/data/export" },
         { text: "SETTING", route: "/settings/main" }
-      ]
+      ],
+      currentUser: []
     };
+  },
+  methods: {
+    hideProfileUserDialog() {
+      this.profileUserDialog = false;
+    },
+    showDialogEditProfile() {
+      this.currentUser = this.$store.getters["auth/getMe"];
+      this.profileUserDialog = true;
+    }
   }
 };
 </script>
