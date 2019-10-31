@@ -142,6 +142,8 @@
   "menu":{
     "uploadData":"UPLOAD DATA",
     "query":"QUERY",
-    "systemSettings":"SYSTEM SETTING"
+    "systemSettings":"SYSTEM SETTING",
+    "settings":"Settings",
+    "logout":"Logout"
   }
 }

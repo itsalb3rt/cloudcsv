@@ -127,7 +127,7 @@
     "create": "Crear",
     "delete": "Eliminar",
     "remove": "Quitar",
-    "noWait": "No!!, esperar, leet me vea de nuevo",
+    "noWait": "No!!, esperar, dejame que vea de nuevo",
     "createTable": "Crear Tabla",
     "text": "Texto",
     "number": "Número de",
@@ -142,6 +142,8 @@
   "menu":{
     "uploadData":"SUBIR DATOS",
     "query":"CONSULTA",
-    "systemSettings":"AJUSTE DEL SISTEMA"
+    "systemSettings":"AJUSTE DEL SISTEMA",
+    "settings":"Configuración",
+    "logout":"Cerrar sesión"
   }
 }
