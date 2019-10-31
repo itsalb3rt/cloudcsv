@@ -130,6 +130,14 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.pageTitle;
   const token = window.localStorage.getItem('token');
 
+  const language = window.localStorage.getItem("app_language");
+
+  if (language === null) {
+    i18n.locale = "en";
+  } else {
+    i18n.locale = language;
+  }
+
   if (to.meta.area === 'public') {
     if (token === null)
       next();
