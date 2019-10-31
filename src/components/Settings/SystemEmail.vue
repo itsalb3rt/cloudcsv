@@ -17,13 +17,22 @@
             <v-card-title class="headline">{{$t('settings.systemEmail')}}</v-card-title>
             <v-card-text>
               <v-form ref="form">
-                <p>{{$t('auth.email')}}</p>
+                <v-text-field
+                  v-model="host"
+                  name="host"
+                  :label="$t('settings.host')"
+                  id="host"
+                  :rules="rules.requiredInput"
+                  placeholder="email.host.com"
+                  outlined
+                ></v-text-field>
                 <v-text-field
                   v-model="systemEmail"
                   name="systemEmail"
                   :label="$t('settings.systemEmail')"
                   id="systemEmail"
                   :rules="rules.email"
+                  placeholder="system@email.com"
                   outlined
                 ></v-text-field>
                 <v-divider></v-divider>
@@ -32,9 +41,10 @@
                   name="password"
                   :label="$t('auth.password')"
                   id="password"
-                  type="password"
+                  :type="showPassword ? 'text' : 'password'"
+                  :append-icon="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                  @click:append="showPassword = !showPassword"
                   placeholder="*********"
-                  append-icon="fa-eye"
                   :rules="rules.minLength8"
                   required
                   outlined
@@ -43,7 +53,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="secondary" text @click="dialog = false">{{$t('callAction.noWait')}}</v-btn>
+              <v-btn color="secondary" outlined @click="dialog = false">{{$t('callAction.noWait')}}</v-btn>
               <v-btn :loading="loading" @click="saveEmail()" color="primary">
                 <v-icon class="mr-2">fa-save</v-icon>
                 {{$t('callAction.save')}} {{$t('auth.email')}}
@@ -66,9 +76,11 @@ export default {
   data() {
     return {
       systemEmail: "",
+      host:'',
       dialog: false,
       password: "",
-      loading: false
+      loading: false,
+      showPassword:false
     };
   },
   methods: {
@@ -76,9 +88,11 @@ export default {
       if (!this.$refs.form.validate()) {
         return false;
       }
+      this.loading = true;
       const payload = {
         email: this.systemEmail,
-        password: this.password
+        password: this.password,
+        host:this.host
       };
       this.$store
         .dispatch("systemEmail/saveEmail", JSON.stringify(payload))
