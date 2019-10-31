@@ -60,20 +60,20 @@ export default {
       profileUserDialog: false,
       profileOptions: {
         settings: {
-          text: "Settings",
+          text: this.$t('menu.settings'),
           route: "#",
           icon: "fa-cog"
         },
         logout: {
-          text: "Logout",
+          text: this.$t('menu.logout'),
           route: "/auth/logout",
           icon: "fa-sign-out-alt"
         }
       },
       items: [
-        { text: "UPLOAD DATA", route: "/data/import" },
-        { text: "QUERY", route: "/data/export" },
-        { text: "SETTING", route: "/settings/main" }
+        { text: this.$t('menu.uploadData'), route: "/data/import" },
+        { text: this.$t('menu.query'), route: "/data/export" },
+        { text: this.$t('menu.systemSettings'), route: "/settings/main" }
       ],
       currentUser: []
     };
