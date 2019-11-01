@@ -41,7 +41,12 @@
             </div>
             <v-divider></v-divider>
             <div class="mt-4">
-              <v-btn :loading="loadingSubmitData" @click="uploadData()" :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0" color="primary">
+              <v-btn
+                :loading="loadingSubmitData"
+                @click="uploadData()"
+                :disabled="fileData.length === 0 || table.length === 0 || columnsConflict.length > 0"
+                color="primary"
+              >
                 <template
                   v-if="fileData.length === 0 || table.length === 0"
                 >{{$t('dataPanel.submitButtonTextDisabled')}}</template>
@@ -72,7 +77,12 @@
                     class="error--text font-weight-bold"
                   >{{$t('dataPanel.columnsConflictInformation')}}</p>
                   <p class="font-weight-bold black--text">{{$t('dataPanel.columnNotInFile')}}</p>
-                  <v-chip label class="mr-2" v-for="(column,index) in columnsConflict" :key="index">{{column}}</v-chip>
+                  <v-chip
+                    label
+                    class="mr-2"
+                    v-for="(column,index) in columnsConflict"
+                    :key="index"
+                  >{{column}}</v-chip>
                 </div>
               </template>
               <v-data-table
@@ -80,7 +90,11 @@
                 :items="fileData"
                 class="elevation-1"
                 :loading="loadingFileData"
-              ></v-data-table>
+              >
+                <template v-slot:item.action="{ item }">
+                  <v-icon small @click="deleteItem(item)">fa-trash</v-icon>
+                </template>
+              </v-data-table>
             </template>
           </v-card-text>
         </v-card>
@@ -111,7 +125,7 @@ export default {
       csvDelimiter: "auto",
       loadingFileData: false,
       columnsConflict: [],
-      loadingSubmitData:false,
+      loadingSubmitData: false
     };
   },
   methods: {
@@ -145,6 +159,10 @@ export default {
       headers.forEach(header => {
         this.fileHeaders.push({ text: header, value: header });
       });
+      this.fileHeaders.push({
+        text: this.$t("callAction.action"),
+        value: "action"
+      });
     },
     fileHaveSameFieldsOfTable(fileHeaders, tableHeaders) {
       let tableHeadersNames = [];
@@ -156,43 +174,56 @@ export default {
         return !fileHeaders.includes(item);
       });
     },
-    uploadData(){
-      const request = confirm(this.$t('messages.confirmeSave'));
+    uploadData() {
+      const request = confirm(this.$t("messages.confirmeSave"));
 
-      if(request){
+      if (request) {
         this.loadingSubmitData = true;
         const data = {
-          table_id:this.table,
-          data:this.fileData
+          table_id: this.table,
+          data: this.fileData
         };
-        this.$store.dispatch('dataStorage/saveData', JSON.stringify(data))
-        .then(response=>{
-          if(response.status === 201){
+        this.$store
+          .dispatch("dataStorage/saveData", JSON.stringify(data))
+          .then(response => {
+            if (response.status === 201) {
+              this.loadingSubmitData = false;
+              this.$store.commit("snackbar/setSnackbar", {
+                show: true,
+                message: this.$t("dataPanel.dataUploadSuccess"),
+                color: "success",
+                top: true
+              });
+
+              //clear data file information
+              this.table = "";
+              this.file = [];
+              this.fileData = [];
+              this.fileHeaders = [];
+            }
+          })
+          .catch(error => {
             this.loadingSubmitData = false;
             this.$store.commit("snackbar/setSnackbar", {
               show: true,
-              message: this.$t("dataPanel.dataUploadSuccess"),
-              color: "success",
-              top: true
-            });
-
-            //clear data file information
-            this.table = '';
-            this.file = [];
-            this.fileData = [];
-            this.fileHeaders = [];
-          }
-        }).catch(error=>{
-          this.loadingSubmitData = false;
-          this.$store.commit("snackbar/setSnackbar", {
-              show: true,
-              message: `${this.$t("server.serverError")} ${this.$t("server.tryAgainLater")}`,
+              message: `${this.$t("server.serverError")} ${this.$t(
+                "server.tryAgainLater"
+              )}`,
               color: "error",
               top: true
             });
-          console.log(error.respose);
-        })
+            console.log(error.respose);
+          });
       }
+    },
+    deleteItem(item) {
+      const request = confirm(this.$t("messages.confirmeDelete"));
+
+      if (request) {
+        const itemIndex = this.fileData.indexOf(item);
+        this.fileData.splice(itemIndex,1);
+      }
+
     }
   },
   computed: {
