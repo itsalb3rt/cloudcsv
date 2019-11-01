@@ -137,7 +137,8 @@
     "edit": "Editar",
     "smtp": "SMTP",
     "authentication": "La autenticación",
-    "goto": "ir a"
+    "goto": "ir a",
+    "downloadCsv":"Download CSV"
   },
   "menu":{
     "uploadData":"SUBIR DATOS",
