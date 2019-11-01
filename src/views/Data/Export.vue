@@ -104,6 +104,17 @@
           <v-card-title primary-title v-if="table !== '' ">
             {{tableName.table_name.toUpperCase()}}
             <v-spacer></v-spacer>
+            <v-btn
+              class="mr-4"
+              color="primary"
+              @click="downloadCsv"
+              outlined
+              :disabled="data.length === 0"
+              :loading="downloading"
+            >
+              <v-icon class="mr-2">fa-file-alt</v-icon>
+              {{$t('callAction.downloadCsv')}}
+            </v-btn>
             <v-text-field
               v-model="search"
               append-icon="fa-search"
@@ -152,7 +163,8 @@ export default {
       loadingQuery: false,
       headers: [],
       data: [],
-      search: ""
+      search: "",
+      downloading:false
     };
   },
   methods: {
@@ -198,6 +210,24 @@ export default {
           this.headers.push({ text: header, value: header });
         }
       });
+    },
+    downloadCsv() {
+      this.downloading = true;
+      let csv = Papa.unparse(this.data);
+
+      let csvData = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      let csvURL = null;
+      if (navigator.msSaveBlob) {
+        csvURL = navigator.msSaveBlob(csvData, "download.csv");
+      } else {
+        csvURL = window.URL.createObjectURL(csvData);
+      }
+
+      let tempLink = document.createElement("a");
+      tempLink.href = csvURL;
+      tempLink.setAttribute("download", `${this.tableName.table_name}.csv`);
+      tempLink.click();
+      this.downloading = false;
     }
   },
   computed: {
@@ -211,8 +241,10 @@ export default {
         return false;
       }
     },
-    tableName(){
-      return this.$store.getters['tables/getTables'].find(table => table.id_table_storage == this.table);
+    tableName() {
+      return this.$store.getters["tables/getTables"].find(
+        table => table.id_table_storage == this.table
+      );
     }
   }
 };
