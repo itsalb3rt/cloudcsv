@@ -20,7 +20,7 @@
         </v-data-table>
       </div>
     </div>
-    <v-dialog v-model="dialog" persistent max-width="500">
+    <v-dialog v-model="dialog" persistent max-width="800">
       <v-card>
         <v-card-title class="headline">{{$t('settings.addNotificationEmail')}}</v-card-title>
         <v-card-text>
