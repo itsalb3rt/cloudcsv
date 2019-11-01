@@ -102,26 +102,32 @@
       <v-col cols="8">
         <v-card>
           <v-card-title primary-title v-if="table !== '' ">
-            {{tableName.table_name.toUpperCase()}}
-            <v-spacer></v-spacer>
-            <v-btn
-              class="mr-4"
-              color="primary"
-              @click="downloadCsv"
-              outlined
-              :disabled="data.length === 0"
-              :loading="downloading"
-            >
-              <v-icon class="mr-2">fa-file-alt</v-icon>
-              {{$t('callAction.downloadCsv')}}
-            </v-btn>
-            <v-text-field
-              v-model="search"
-              append-icon="fa-search"
-              :label="$t('callAction.search')"
-              single-line
-              hide-details
-            ></v-text-field>
+            <v-row>
+              <v-col cols="6">{{tableName.table_name.toUpperCase()}}</v-col>
+              <v-col cols="6">
+                <v-text-field
+                  v-model="search"
+                  append-icon="fa-search"
+                  :label="$t('callAction.search')"
+                  single-line
+                  hide-details
+                  outlined
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  class="mr-4"
+                  color="primary"
+                  @click="downloadCsv"
+                  outlined
+                  :disabled="data.length === 0"
+                  :loading="downloading"
+                >
+                  <v-icon class="mr-2">fa-file-alt</v-icon>
+                  {{$t('callAction.downloadCsv')}}
+                </v-btn>
+              </v-col>
+            </v-row>
           </v-card-title>
           <v-card-text>
             <v-data-table
@@ -164,7 +170,7 @@ export default {
       headers: [],
       data: [],
       search: "",
-      downloading:false
+      downloading: false
     };
   },
   methods: {
