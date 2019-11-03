@@ -9,7 +9,7 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 ## Index
 
 - [:computer: App Interface](#app-interface)
-- [🤔 What can be done in this application?](#what-can-be-done-in-this-application)
+- [🤔 What can be done in this application ?](#what-can-be-done-in-this-application)
 - [:wrench: Development tools](#development-tools)
 	- [:tada: Front-end](#front-end)
 	- [:ghost: Back-end](#back-end)
@@ -36,7 +36,7 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 
 ---
 **[⬆ Back to Index](#index)**
-### What can be done in this application ?
+### What can be done in this application
 
 **Auth**
 - User Registration
