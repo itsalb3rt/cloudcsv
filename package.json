@@ -1,13 +1,12 @@
 {
   "name": "cloudcsv_app",
-  "version": "0.1.0",
+  "version": "0.8.55",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@fortawesome/fontawesome-free": "^5.8.2",
