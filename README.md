@@ -14,6 +14,8 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 	- [:tada: Front-end](#front-end)
 	- [:ghost: Back-end](#back-end)
 - [:blue_book: How to install on my own server](#how-to-install-on-my-own-server)
+	- [Front-end implementation](#front-end-implementation)
+	- [Back-end implementation](#back-end-implementation)
 
 ---
 
@@ -91,9 +93,10 @@ CloudCSV is a Open source web application for the storage all CSV file data into
  - Postgres >= 9.6
 
 ---
+**[⬆ Back to Index](#index)**
 ## How to install on my own server
 
-### Front-end
+### Front-end implementation
 
 Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv/releases)
 
@@ -105,7 +108,7 @@ $ npm install
 
 Now you have the developer version, for create version for implementation, first go to `scr/.env` file and change the environment  `conts`;
 
-> This ref to you API implementation;
+> This ref to you API implementation without the final slash ( / );
 
 ```javascript
 VUE_APP_BASE_URL_DEV=http://localhost/cloudcsv_api
@@ -120,9 +123,17 @@ Wait few seconds and copy the `dist` folder into your server directory.
 
 **:warning: IMPORTANT**: Copy the `.htaccess` to `dist` folder, after copy the file rename de `dist` folder to `cloudcsv`.
 
-### Back-end (API)
+---
 
-Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
+### Back-end implementation
+
+**PHP extensions required**;
+
+- pdo_pgsql 
+
+---
+
+-Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
 
 Unzip and run;
 
@@ -136,7 +147,29 @@ After run `composer install` go to `system/config/config.php.ini` file and put y
 
 ---
 
+### Database (Postgres)
+
+In the `API` dir, go to file in `etc/UML/SQL/data_model_table_create.sql` copy this script an run in your database;
+
+**:warning:IMPORTANT**: Make a sure the `dbname` and `prefix` is same on you `API config` file and you database instance;
+
+Example:
+
+```ini
+dbname=laragon_cloudcsv
+prefix=cloudcsv.
+```
+> Please include the dot ( . ) in the final of the `prefix`
+
+
+# :tada: Now you system is ready!
+
+---
+## Extra information
+
 Authentication will be based on Tokens, the token will be stored in the database and validated if the token corresponds to the users, the token must be self-generated every time the user logs on.
+
+Into `API/etc` dir you have a `Adobe XD` project and `UML`  dir `StarUML` project. feel free to modicate this and send you suggestion.
 
 ---
 
