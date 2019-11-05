@@ -121,7 +121,7 @@ $ npm run build
 ```
 Wait few seconds and copy the `dist` folder into your server directory.
 
-**:warning: IMPORTANT**: Copy the `.htaccess` to `dist` folder, after copy the file rename de `dist` folder to `cloudcsv`.
+**:warning: IMPORTANT**: Rename de `dist` folder to `cloudcsv`.
 
 ---
 
