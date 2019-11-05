@@ -90,6 +90,51 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 **Database**
  - Postgres >= 9.6
 
+---
+## How to install on my own server
+
+### Front-end
+
+Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv/releases)
+
+Unzip and run;
+
+```bash
+$ npm install
+```
+
+Now you have the developer version, for create version for implementation, first go to `scr/.env` file and change the environment  `conts`;
+
+> This ref to you API implementation;
+
+```javascript
+VUE_APP_BASE_URL_DEV=http://localhost/cloudcsv_api
+VUE_APP_BASE_URL_PRO=http://myhost/cloudcsv_api
+```
+and run;
+
+```bash
+$ npm run build
+```
+Wait few seconds and copy the `dist` folder into your server directory.
+
+**:warning: IMPORTANT**: Copy the `.htaccess` to `dist` folder, after copy the file rename de `dist` folder to `cloudcsv`.
+
+### Back-end (API)
+
+Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
+
+Unzip and run;
+
+```bash
+$ composer install
+```
+
+After run `composer install` go to `system/config/config.php.ini` file and put your `postgres` auth information.
+
+**:warning: IMPORTANT**: You need go to `system/webroot/FrontController.php` file and edit the const `BASE_URL_PRODUCTION_FRONTEND`, add the production URL for `CORS`. [Read more from CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+---
 
 Authentication will be based on Tokens, the token will be stored in the database and validated if the token corresponds to the users, the token must be self-generated every time the user logs on.
 
