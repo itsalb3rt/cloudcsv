@@ -1,8 +1,7 @@
-<center>
-<img src="https://i.imgur.com/BwKm56Q.png" />
-</center>
+<div align="center">
+	<img src="https://i.imgur.com/BwKm56Q.png" />
+</div>
 
----
 
 CloudCSV is a Open source web application for the storage all CSV file data into your data base from a friendly graphical interface for non-technical people, user management, email notifications and more ...
 
@@ -14,12 +13,13 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 	- [:tada: Front-end](#front-end)
 	- [:ghost: Back-end](#back-end)
 - [:blue_book: How to install on my own server](#how-to-install-on-my-own-server)
-	- [Front-end implementation](#front-end-implementation)
-	- [Back-end implementation](#back-end-implementation)
+	- [:crystal_ball:Front-end implementation](#front-end-implementation)
+	- [:computer:Back-end implementation](#back-end-implementation)
+	- [:floppy_disk:Database](#database-postgres)
 
----
 
-### App interface
+## App interface
+
 > **Create a table**
 
 ![Create a table](https://i.imgur.com/Rj4AWlj.png)
@@ -36,8 +36,9 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 
 ![Data Query](https://i.imgur.com/ZWpGJ2K.png)
 
----
+
 **[⬆ Back to Index](#index)**
+
 ### What can be done in this application
 
 **Auth**
@@ -60,11 +61,11 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 - User management for admins
 - Create, edit or delete dynamics tables data base for keep organize your data
 
----
 **[⬆ Back to Index](#index)**
-### Development tools
 
-### Front-end
+## Development tools
+
+#### Front-end
 
 - [Vue-cli](https://vuejs.org/ "Vue-cli")
 	- [Vuex](https://vuex.vuejs.org/ "Vuex")
@@ -73,7 +74,7 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 
 - [Vuetify (UI)](https://vuetifyjs.com "Vuetify (UI)")
 
-### Back-end
+#### Back-end
 
 - [PHP (Framework Ligne Api Rest)](https://ligne-framework.gitbook.io/ligne-framework-php/ "PHP (Framework Ligne Api Rest)")
 - [Http Foundation](https://packagist.org/packages/symfony/http-foundation)
@@ -89,14 +90,25 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 - - Generate a unique token with time mark, for example for account recovery
 - [Email Validator](https://packagist.org/packages/egulias/email-validator)
 
-**Database**
+#### Database
  - Postgres >= 9.6
 
----
+
 **[⬆ Back to Index](#index)**
+
 ## How to install on my own server
 
-### Front-end implementation
+#### :exclamation: Requirements
+
+- PHP >= 7.2
+- Composer >= 1.8
+- Postgres SQL >= 9.6
+- Vue-Cli >= 4.0
+- NodeJs >= 10.14
+
+<br>
+
+#### Front-end implementation
 
 Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv/releases)
 
@@ -122,18 +134,15 @@ $ npm run build
 Wait few seconds and copy the `dist` folder into your server directory.
 
 **:warning: IMPORTANT**: Rename de `dist` folder to `cloudcsv`.
-
----
-
-### Back-end implementation
+<br>
+#### Back-end implementation
 
 **PHP extensions required**;
-
 - pdo_pgsql 
 
----
+<br>
 
--Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
+Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
 
 Unzip and run;
 
@@ -143,11 +152,12 @@ $ composer install
 
 After run `composer install` go to `system/config/config.php.ini` file and put your `postgres` auth information.
 
+<br>
+
 **:warning: IMPORTANT**: You need go to `system/webroot/FrontController.php` file and edit the const `BASE_URL_PRODUCTION_FRONTEND`, add the production URL for `CORS`. [Read more from CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
----
 
-### Database (Postgres)
+### Database Postgres
 
 In the `API` dir, go to file in `etc/UML/SQL/data_model_table_create.sql` copy this script an run in your database;
 
@@ -161,6 +171,9 @@ prefix=cloudcsv.
 ```
 > Please include the dot ( . ) in the final of the `prefix`
 
+<rb>
+
+---
 
 # :tada: Now you system is ready!
 
