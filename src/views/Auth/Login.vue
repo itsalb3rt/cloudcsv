@@ -53,21 +53,21 @@
   </div>
 </template>
 <script>
-import formRules from '@/mixins/Miscellany/FormRules'
+import formRules from "@/mixins/Miscellany/FormRules";
 
 export default {
-  mixins:[formRules],
+  mixins: [formRules],
   data() {
     return {
       materialImage: require("@/assets/images/MaterialData.png"),
       userName: "",
       password: "",
-      loading: false,
+      loading: false
     };
   },
   methods: {
     checkLogin() {
-      if(!this.$refs.loginForm.validate()){
+      if (!this.$refs.loginForm.validate()) {
         return false;
       }
       this.loading = true;
@@ -77,13 +77,24 @@ export default {
           password: this.password
         })
         .then(response => {
-
-            window.localStorage.setItem('token',response.data.token);
-            window.localStorage.setItem('user',JSON.stringify(response.data));
+          if (response.data.token !== undefined) {
+            window.localStorage.setItem("token", response.data.token);
+            window.localStorage.setItem("user", JSON.stringify(response.data));
             this.$store.commit("auth/SET_USER", response.data);
+          }else{
+            this.$store.commit("snackbar/setSnackbar", {
+              show: true,
+              message: `${this.$t("server.serverError")} ${this.$t(
+                "server.tryAgainLater"
+              )}`,
+              color: "error",
+              top: true
+            });
+          }
+
           setTimeout(() => {
             this.loading = false;
-            this.$router.push('/data/import');
+            this.$router.push("/data/import");
           }, 1000);
         })
         .catch(error => {
@@ -95,17 +106,21 @@ export default {
               color: "error",
               top: true
             });
-          }else if(error.response.status === 404){
+          } else if (error.response.status === 404) {
             this.$store.commit("snackbar/setSnackbar", {
               show: true,
-              message: `${this.$t("auth.userName")} ${this.$t("messages.notFound")}`,
+              message: `${this.$t("auth.userName")} ${this.$t(
+                "messages.notFound"
+              )}`,
               color: "error",
               top: true
             });
-          }else{
+          } else {
             this.$store.commit("snackbar/setSnackbar", {
               show: true,
-              message: `${this.$t("server.serverError")} ${this.$t('server.tryAgainLater')}`,
+              message: `${this.$t("server.serverError")} ${this.$t(
+                "server.tryAgainLater"
+              )}`,
               color: "error",
               top: true
             });
