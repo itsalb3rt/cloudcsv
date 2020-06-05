@@ -159,7 +159,7 @@ After run `composer install` go to `system/config/config.php.ini` file and put y
 
 ### Database Postgres
 
-In the `API` dir, go to file in `etc/UML/SQL/data_model_table_create.sql` copy this script an run in your database;
+In the `API` dir, go to file in `etc/init_db.sql` copy this script an run in your database;
 
 **:warning:IMPORTANT**: Make a sure the `dbname` and `prefix` is same on you `API config` file and you database instance;
 
