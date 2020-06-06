@@ -10,12 +10,13 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 - [:computer: App Interface](#app-interface)
 - [🤔 What can be done in this application ?](#what-can-be-done-in-this-application)
 - [:wrench: Development tools](#development-tools)
-	- [:tada: Front-end](#front-end)
-	- [:ghost: Back-end](#back-end)
+	- [Front-end](#front-end)
+	- [Back-end](#back-end)
 - [:blue_book: How to install on my own server](#how-to-install-on-my-own-server)
-	- [:crystal_ball:Front-end implementation](#front-end-implementation)
-	- [:computer:Back-end implementation](#back-end-implementation)
-	- [:floppy_disk:Database](#database-postgres)
+	- [Front-end implementation](#front-end-implementation)
+	- [Back-end implementation](#back-end-implementation)
+	- [Database](#database-postgres)
+- [:whale:Docker](#docker)
 
 
 ## App interface
@@ -110,51 +111,35 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 
 #### Front-end implementation
 
-Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv/releases)
-
-Unzip and run;
 
 ```bash
+$ git clone https://github.com/itsalb3rt/cloudcsv.git
+# After cd cloudcsv
 $ npm install
 ```
 
-Now you have the developer version, for create version for implementation, first go to `scr/.env` file and change the environment  `conts`;
+All setings in `.env` file in root dir
 
 > This ref to you API implementation without the final slash ( / );
 
-```javascript
+```env
 VUE_APP_BASE_URL_DEV=http://localhost/cloudcsv_api
-VUE_APP_BASE_URL_PRO=http://myhost/cloudcsv_api
+VUE_APP_BASE_URL_PRO=http://localhost:8018/cloudcsv_api
 ```
-and run;
 
-```bash
-$ npm run build
-```
-Wait few seconds and copy the `dist` folder into your server directory.
-
-**:warning: IMPORTANT**: Rename de `dist` folder to `cloudcsv`.
-<br>
 #### Back-end implementation
 
 **PHP extensions required**;
 - pdo_pgsql 
 
-<br>
-
-Download the last release `Source code (zip)` from the [Github repository](https://github.com/itsalb3rt/cloudcsv_api/releases)
-
-Unzip and run;
 
 ```bash
+$ git clone https://github.com/itsalb3rt/cloudcsv_api.git
+#After cd cloudcsv_api
 $ composer install
 ```
 
 After run `composer install` go to `system/config/config.php.ini` file and put your `postgres` auth information.
-
-<br>
-
-**:warning: IMPORTANT**: You need go to `system/webroot/FrontController.php` file and edit the const `BASE_URL_PRODUCTION_FRONTEND`, add the production URL for `CORS`. [Read more from CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
 
 ### Database Postgres
@@ -166,16 +151,37 @@ In the `API` dir, go to file in `etc/init_db.sql` copy this script an run in you
 Example:
 
 ```ini
-dbname=laragon_cloudcsv
-prefix=cloudcsv.
+dbname=cloudcsv
+prefix=public.
 ```
 > Please include the dot ( . ) in the final of the `prefix`
 
-<rb>
 
 ---
 
 # :tada: Now you system is ready!
+
+# Docker
+
+By default the App and the API is ready for used with docker;
+
+**App**
+
+```bash
+$ git clone https://github.com/itsalb3rt/cloudcsv.git
+# After cd cloudcsv
+$ docker-compose up
+```
+
+**API**
+
+```bash
+$ git clone https://github.com/itsalb3rt/cloudcsv_api.git
+#After cd cloudcsv_api
+$ docker-compose up
+```
+
+Now go to http://localhost:8017 and is done :tada:
 
 ---
 ## Extra information
