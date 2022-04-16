@@ -117,7 +117,7 @@ export default {
 
       this.loading = true;
       this.$store
-        .dispatch("auth/register", JSON.stringify(this.user))
+        .dispatch("auth/register", this.user)
         .then(response => {
           this.loading = false;
           this.isRegistered = true;
