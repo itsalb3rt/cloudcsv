@@ -5,6 +5,25 @@
 
 CloudCSV is a Open source web application for the storage all CSV file data into your data base from a friendly graphical interface for non-technical people, user management, email notifications and more ...
 
+## Give a Star! ⭐
+
+If you like this project or plan to use it in the future, please give it a star. Thanks 🙏
+
+## Bugs and Feedback
+
+For bugs, questions, and discussions, please use the [Github Issues](https://github.com/itsalb3rt/cloudcsv/issues) we have cool templates for you.
+
+
+## Contributing
+
+For contributing, please see the following links:
+
+- [Contribution Documents](https://github.com/itsalb3rt/cloudcsv/blob/master/CONTRIBUTING.md)
+
+We're glad to be supported by respected companies and individuals from several industries. [See our Github Sponsors learn more](https://github.com/sponsors/itsalb3rt).
+
+> [Become a Github Sponsor](https://github.com/sponsors/itsalb3rt) :heart:
+
 ## Index
 
 - [:computer: App Interface](#app-interface)
@@ -16,7 +35,7 @@ CloudCSV is a Open source web application for the storage all CSV file data into
 	- [Front-end implementation](#front-end-implementation)
 	- [Back-end implementation](#back-end-implementation)
 	- [Database](#database-postgres)
-- [:whale:Docker](#docker)
+- [:whale: Docker (Recommended)](#docker)
 
 
 ## App interface
@@ -159,7 +178,9 @@ prefix=public.
 
 ---
 
-# :tada: Now you system is ready!
+### :tada: Now you system is ready!
+
+---
 
 # Docker
 
@@ -168,20 +189,35 @@ By default the App and the API is ready for used with docker;
 **App**
 
 ```bash
-$ git clone https://github.com/itsalb3rt/cloudcsv.git
-# After cd cloudcsv
-$ docker-compose up
+git clone https://github.com/itsalb3rt/cloudcsv.git
 ```
+
+```bash
+cd cloudcsv
+```
+
+Now you can run the compose file;
+```bash
+docker-compose up -d
+```
+
+Afther this you only need run the API.
 
 **API**
 
 ```bash
-$ git clone https://github.com/itsalb3rt/cloudcsv_api.git
-#After cd cloudcsv_api
-$ docker-compose up
+git clone https://github.com/itsalb3rt/cloudcsv_api.git
+```
+```bash
+cd cloudcsv_api
 ```
 
-Now go to http://localhost:8017 and is done :tada:
+
+```bash
+docker-compose up
+```
+
+Now go to http://localhost:8017 and is done :tada:.
 
 ---
 ## Extra information
@@ -192,7 +228,6 @@ Into `API/etc` dir you have a `Adobe XD` project and `UML`  dir `StarUML` projec
 
 ---
 
-## Contribute
+## License
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device.
-2. Start making changes
+Copyright (C) 2022 by Albert Hidalgo. MIT License (see [LICENSE](https://github.com/itsalb3rt/cloudcsv/blob/master/LICENSE) for details).
