@@ -201,7 +201,7 @@ export default {
       };
 
       this.$store
-        .dispatch("tables/createTable", JSON.stringify(newTable))
+        .dispatch("tables/createTable", newTable)
         .then(response => {
           if (response.status === 201) {
             this.$store.commit("snackbar/setSnackbar", {
