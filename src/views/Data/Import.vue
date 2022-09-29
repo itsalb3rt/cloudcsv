@@ -184,7 +184,7 @@ export default {
           data: this.fileData
         };
         this.$store
-          .dispatch("dataStorage/saveData", JSON.stringify(data))
+          .dispatch("dataStorage/saveData", data)
           .then(response => {
             if (response.status === 201) {
               this.loadingSubmitData = false;
