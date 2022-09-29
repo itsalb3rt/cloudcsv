@@ -92,7 +92,7 @@
                   :loading="loadingQuery"
                   :disabled="table.length === 0 || !isDatesFill"
                   color="primary"
-                  @click="query()"
+                  @click="query({page: 1, itemsPerPage: 10})"
                 >{{$t('callAction.query')}}</v-btn>
               </div>
             </v-form>
@@ -137,6 +137,9 @@
               :items="data"
               class="elevation-1"
               :loading="loadingQuery"
+              :options.sync="tableOptions"
+              @update:options="onOptionsUpdate"
+              :server-items-length="totalDesserts"
             ></v-data-table>
           </v-card-text>
         </v-card>
@@ -170,23 +173,31 @@ export default {
       headers: [],
       data: [],
       search: "",
-      downloading: false
+      downloading: false,
+      tableOptions: {
+        page: 1,
+        itemsPerPage: 10
+      },
+      totalDesserts: 0
     };
   },
   methods: {
-    query() {
+    query({page, itemsPerPage}) {
       this.loadingQuery = true;
 
       this.$store
         .dispatch("dataStorage/getDataByTable", {
           tableId: this.table,
-          queryString: this.getQueryString()
+          queryString: this.getQueryString(),
+          page,
+          itemsPerPage
         })
         .then(response => {
           if (response.status === 200) {
-            if (response.data.length > 0) {
-              this.setHeaders(Object.keys(response.data[0]), ["id_user"]);
-              this.data = response.data;
+            if (response.data && response.data.data.length > 0) {
+              this.setHeaders(Object.keys(response.data.data[0]), ["id_user"]);
+              this.data = response.data.data;
+              this.totalDesserts = response.data.pagination.total;
             } else {
               this.data = [];
               this.headers = [];
@@ -203,7 +214,7 @@ export default {
       if (this.startDate.length > 0 && this.endDate.length > 0) {
         return `?create_at>=${this.startDate}&create_at<=${this.endDate}`;
       } else {
-        return " ";
+        return "";
       }
     },
     setHeaders(headers, omitHeaders = null) {
@@ -219,21 +230,41 @@ export default {
     },
     downloadCsv() {
       this.downloading = true;
-      let csv = Papa.unparse(this.data);
 
-      let csvData = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-      let csvURL = null;
-      if (navigator.msSaveBlob) {
-        csvURL = navigator.msSaveBlob(csvData, "download.csv");
-      } else {
-        csvURL = window.URL.createObjectURL(csvData);
+      this.$store
+        .dispatch("dataStorage/getDataByTable", {
+          tableId: this.table,
+          queryString: this.getQueryString(),
+          page: 1,
+          itemsPerPage:'-1'
+        }).then( response => {
+          console.log(response.data.data)
+          let csv = Papa.unparse(response.data.data);
+
+          let csvData = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+          let csvURL = null;
+          if (navigator.msSaveBlob) {
+            csvURL = navigator.msSaveBlob(csvData, "download.csv");
+          } else {
+            csvURL = window.URL.createObjectURL(csvData);
+          }
+
+          let tempLink = document.createElement("a");
+          tempLink.href = csvURL;
+          tempLink.setAttribute("download", `${this.tableName.table_name}.csv`);
+          tempLink.click();
+        })
+        .finally(() => {
+          this.downloading = false;
+        })
+    },
+    onOptionsUpdate() {
+      if (this.table) {
+        this.query({
+          page: this.tableOptions.page,
+          itemsPerPage: this.tableOptions.itemsPerPage
+        });
       }
-
-      let tempLink = document.createElement("a");
-      tempLink.href = csvURL;
-      tempLink.setAttribute("download", `${this.tableName.table_name}.csv`);
-      tempLink.click();
-      this.downloading = false;
     }
   },
   computed: {
