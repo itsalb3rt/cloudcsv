@@ -127,7 +127,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.pageTitle;
+  document.title = `${to.meta.pageTitle} - ${process.env.VUE_APP_NAME}`;
   const token = window.localStorage.getItem('token');
 
   const language = window.localStorage.getItem("app_language");
