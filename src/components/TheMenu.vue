@@ -21,7 +21,7 @@
               <v-avatar size="35">
                 <v-icon dark>fa-user-circle</v-icon>
               </v-avatar>
-              <span class="ml-2 black--text">{{$store.state.auth.user.user_name}}</span>
+              <span class="ml-2 black--text">{{$store.state.auth.user && $store.state.auth.user.user_name}}</span>
               <v-icon class="ml-2">fa-angle-down</v-icon>
             </v-btn>
           </template>
