@@ -110,6 +110,28 @@ export default {
     };
   },
   methods: {
+    showErrorSnackbar(message) {
+      this.$store.commit("snackbar/setSnackbar", {
+        show: true,
+        message,
+        color: "error",
+        top: true
+      });
+    },
+    getErrorMessage(error) {
+      const defaultErrorMessage = "We have an error, please try again in a few moment.";
+      const responseErrorMessage = error.response?.data?.message;
+      const serverErrorMessage = `${this.$t("server.serverError")} ${this.$t(
+        "server.tryAgainLater"
+      )}`;
+
+      if (error.response?.status === 500) return serverErrorMessage;
+      return responseErrorMessage || defaultErrorMessage;
+    },
+    handleRegisterError(error) {
+      const errorMessage = this.getErrorMessage(error);
+      this.showErrorSnackbar(errorMessage);
+    },
     register() {
       if (!this.$refs.registerForm.validate()) {
         return false;
@@ -119,31 +141,14 @@ export default {
       this.$store
         .dispatch("auth/register", this.user)
         .then(response => {
-          this.loading = false;
           this.isRegistered = true;
           setTimeout(() => {
             this.$router.push("/auth/login");
           }, 2000);
         })
-        .catch(error => {
+        .catch(this.handleRegisterError)
+        .finally(() => {
           this.loading = false;
-          if (error.response.status === 500) {
-            this.$store.commit("snackbar/setSnackbar", {
-              show: true,
-              message: `${this.$t("server.serverError")} ${this.$t(
-                "server.tryAgainLater"
-              )}`,
-              color: "error",
-              top: true
-            });
-          } else {
-            this.$store.commit("snackbar/setSnackbar", {
-              show: true,
-              message: error.response.data,
-              color: "error",
-              top: true
-            });
-          }
         });
     }
   }
