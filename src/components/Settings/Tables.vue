@@ -60,6 +60,7 @@
                     outlined
                     :rules="rules.tableName"
                     required
+                    @input="sanitizeTableName"
                   ></v-text-field>
                   <template v-if="tableNameExits">
                     <p
@@ -291,7 +292,10 @@ export default {
       } else {
         this.hasDuplicateColumn = true;
       }
-    }
+    },
+    sanitizeTableName() {
+      this.tableName = this.tableName.toLowerCase();
+    },
   },
   computed: {
     tableNameExits() {
