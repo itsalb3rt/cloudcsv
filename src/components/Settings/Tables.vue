@@ -89,6 +89,7 @@
                         :rules="rules.tableColumns"
                         required
                         @keyup="isNameDuplicate(index)"
+                        @input="sanitizeColumnName(index)"
                       ></v-text-field>
                       <template v-if="column.duplicate">
                         <p
@@ -296,6 +297,9 @@ export default {
     sanitizeTableName() {
       this.tableName = this.tableName.toLowerCase();
     },
+    sanitizeColumnName(index) {
+      this.columns[index].name = this.columns[index].name.toLowerCase();
+    }
   },
   computed: {
     tableNameExits() {
