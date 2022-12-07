@@ -18,7 +18,8 @@
       "confirmRecoveryInformation": "Pronto recibirá un correo electrónico con las instrucciones para la recuperación de la cuenta. Este correo electrónico expira en 2 horas.",
       "invalidToken": "El símbolo no es válida, por favor intenta solicitar una recuperación de nuevo.",
       "passwordResetSuccess": "Su contraseña se ha restablecido"
-    }
+    },
+    "emailOrUserName": "Nombre de usuario o correo electrónico"
   },
   "messages": {
     "notFound": "No se encuentra",

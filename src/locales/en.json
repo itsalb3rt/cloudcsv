@@ -18,7 +18,8 @@
       "confirmRecoveryInformation":"You will soon be receiving an email with the instructions for recovering the account. This email expires in 2 hours.",
       "invalidToken":"The token is not valid, please try request a recovery again.",
       "passwordResetSuccess":"Your password has been reset"
-    }
+    },
+    "emailOrUserName": "Email or user name"
   },
   "messages": {
     "notFound": "Not found",
