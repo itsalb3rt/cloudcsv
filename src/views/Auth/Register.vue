@@ -32,17 +32,6 @@
                   required
                   outlined
                 ></v-text-field>
-                <v-text-field
-                  v-model="user.user_name"
-                  name="userName"
-                  :label="$t('auth.userName')"
-                  id="userName"
-                  type="text"
-                  placeholder="jhondoe"
-                  :rules="rules.userName"
-                  required
-                  outlined
-                ></v-text-field>
                 <p>{{$t('auth.autoFillField')}}</p>
                 <v-text-field
                   v-model="user.password"
@@ -100,7 +89,6 @@ export default {
       materialImage: require("@/assets/images/MaterialData.png"),
       user: {
         full_name: "",
-        user_name: "",
         email: "",
         password: "",
         confirm_password: ""
