@@ -19,7 +19,7 @@
                 <v-text-field
                   v-model="userName"
                   name="userName"
-                  :label="$t('auth.userName')"
+                  :label="$t('auth.emailOrUserName')"
                   id="userName"
                   type="text"
                   placeholder="jhondoe"
