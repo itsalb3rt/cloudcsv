@@ -26,6 +26,7 @@
                   :rules="rules.requiredInput"
                   required
                   outlined
+                  @keydown.enter="checkLogin()"
                 ></v-text-field>
                 <v-text-field
                   v-model="password"
@@ -37,6 +38,7 @@
                   :rules="rules.requiredInput"
                   required
                   outlined
+                  @keydown.enter="checkLogin()"
                 ></v-text-field>
               </div>
               <div class="text-center">
