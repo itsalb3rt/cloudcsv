@@ -214,7 +214,7 @@ cd cloudcsv_api
 
 
 ```bash
-docker-compose up
+docker network create traefik_proxynet && docker-compose up
 ```
 
 Now go to http://localhost:8017 and is done :tada:.
