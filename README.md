@@ -214,6 +214,9 @@ cd cloudcsv_api
 
 
 ```bash
+# Install all the dependencies
+make install-dependencies
+# Run the API
 docker network create traefik_proxynet && docker-compose up
 ```
 
